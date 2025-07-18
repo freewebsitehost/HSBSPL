@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers | Join HSBS Business Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== BASE STYLES ===== */
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #e74c3c;
+            --accent-color: #3498db;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --light-text: #fff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f9f9f9;
+        }
+
+        body.dark-mode {
+            background-color: #1a1a1a;
+            color: #f1f1f1;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .btn-primary {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+        }
+
+        /* ===== CAREERS HERO ===== */
+        .careers-hero {
+            background: linear-gradient(135deg, rgba(44, 62, 80, 0.9) 0%, rgba(52, 152, 219, 0.8) 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+
+        .dark-mode .careers-hero {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(44, 62, 80, 0.8) 100%);
+        }
+
+        .careers-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .careers-hero p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* ===== WHY JOIN US ===== */
+        .why-join {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .dark-mode .why-join {
+            background-color: #222;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-color);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .benefit-card {
+            text-align: center;
+            padding: 30px;
+            border-radius: 8px;
+            background-color: var(--light-color);
+            transition: var(--transition);
+        }
+
+        .dark-mode .benefit-card {
+            background-color: #333;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .benefit-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 20px;
+            background-color: rgba(231, 76, 60, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--secondary-color);
+        }
+
+        .benefit-card h3 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .dark-mode .benefit-card h3 {
+            color: var(--light-text);
+        }
+
+        /* ===== JOB OPENINGS ===== */
+        .job-openings {
+            padding: 80px 0;
+            background-color: #f5f7fa;
+        }
+
+        .dark-mode .job-openings {
+            background-color: #1a1a1a;
+        }
+
+        .jobs-filter {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 20px;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            background-color: white;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .dark-mode .filter-btn {
+            background-color: #333;
+            border-color: #555;
+            color: white;
+        }
+
+        .filter-btn.active, 
+        .filter-btn:hover {
+            background-color: var(--secondary-color);
+            color: white;
+            border-color: var(--secondary-color);
+        }
+
+        .jobs-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .job-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .dark-mode .job-card {
+            background-color: #333;
+        }
+
+        .job-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .job-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .dark-mode .job-card h3 {
+            color: var(--light-text);
+        }
+
+        .job-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 15px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .dark-mode .job-meta {
+            color: #aaa;
+        }
+
+        .job-meta span {
+            display: flex;
+            align-items: center;
+        }
+
+        .job-meta i {
+            margin-right: 5px;
+            color: var(--secondary-color);
+        }
+
+        .job-description {
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .dark-mode .job-description {
+            color: #ccc;
+        }
+
+        /* ===== APPLICATION FORM ===== */
+        .application-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .dark-mode .application-section {
+            background-color: #222;
+        }
+
+        .application-form {
+            max-width: 700px;
+            margin: 0 auto;
+            background-color: var(--light-color);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .dark-mode .application-form {
+            background-color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            transition: var(--transition);
+        }
+
+        .dark-mode .form-control {
+            background-color: #444;
+            border-color: #555;
+            color: white;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.2);
+        }
+
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .file-upload {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .file-upload-btn {
+            padding: 8px 15px;
+            background-color: #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .dark-mode .file-upload-btn {
+            background-color: #555;
+            color: white;
+        }
+
+        .file-upload-btn:hover {
+            background-color: #ccc;
+        }
+
+        .dark-mode .file-upload-btn:hover {
+            background-color: #666;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .careers-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .application-form {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body class="light-mode">
+    <!-- Careers Hero -->
+    <section class="careers-hero">
+        <div class="container">
+            <h1>Build Your Career With Us</h1>
+            <p>Join a team of passionate professionals dedicated to delivering exceptional business solutions</p>
+            <a href="#openings" class="btn btn-primary">View Current Openings</a>
+        </div>
+    </section>
+
+    <!-- Why Join Us -->
+    <section class="why-join">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Join HSBS?</h2>
+            </div>
+
+            <div class="benefits-grid">
+                <!-- Benefit 1 -->
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Career Growth</h3>
+                    <p>Structured career paths with regular training and mentorship programs to help you grow professionally.</p>
+                </div>
+
+                <!-- Benefit 2 -->
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Collaborative Culture</h3>
+                    <p>Work with talented professionals in an environment that values teamwork and innovation.</p>
+                </div>
+
+                <!-- Benefit 3 -->
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3>Work-Life Balance</h3>
+                    <p>Flexible work arrangements and wellness programs to support your personal and professional life.</p>
+                </div>
+
+                <!-- Benefit 4 -->
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Global Exposure</h3>
+                    <p>Opportunities to work with international clients and on cross-border projects.</p>
+                </div>
+
+                <!-- Benefit 5 -->
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>Competitive Benefits</h3>
+                    <p>Comprehensive compensation packages including health insurance and performance bonuses.</p>
+                </div>
+
+                <!-- Benefit 6 -->
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Innovation Focus</h3>
+                    <p>Work with cutting-edge technologies and methodologies in the business solutions space.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Job Openings -->
+    <section class="job-openings" id="openings">
+        <div class="container">
+            <div class="section-header">
+                <h2>Current Openings</h2>
+            </div>
+
+            <div class="jobs-filter">
+                <button class="filter-btn active">All Departments</button>
+                <button class="filter-btn">Finance</button>
+                <button class="filter-btn">Consulting</button>
+                <button class="filter-btn">Technology</button>
+                <button class="filter-btn">Operations</button>
+            </div>
+
+            <div class="jobs-list">
+                <!-- Job 1 -->
+                <div class="job-card">
+                    <h3>Senior Financial Consultant</h3>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> New Delhi, India</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-clock"></i> Posted 5 days ago</span>
+                    </div>
+                    <p class="job-description">We're seeking an experienced financial consultant to lead client engagements, provide strategic advice, and develop financial models for SMEs and large enterprises.</p>
+                    <a href="#apply" class="btn btn-primary">Apply Now</a>
+                </div>
+
+                <!-- Job 2 -->
+                <div class="job-card">
+                    <h3>ERP Implementation Specialist</h3>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Remote</span>
+                        <span><i class="fas fa-briefcase"></i> Contract</span>
+                        <span><i class="fas fa-clock"></i> Posted 2 weeks ago</span>
+                    </div>
+                    <p class="job-description">Join our technology team to implement and customize ERP solutions for clients across various industries, ensuring seamless integration with their business processes.</p>
+                    <a href="#apply" class="btn btn-primary">Apply Now</a>
+                </div>
+
+                <!-- Job 3 -->
+                <div class="job-card">
+                    <h3>Business Analyst</h3>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Mumbai, India</span>
+                        <span><i class="fas fa-briefcase"></i> Full-time</span>
+                        <span><i class="fas fa-clock"></i> Posted 3 weeks ago</span>
+                    </div>
+                    <p class="job-description">Analyze business processes, gather requirements, and recommend solutions to improve efficiency and productivity for our diverse client portfolio.</p>
+                    <a href="#apply" class="btn btn-primary">Apply Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Form -->
+    <section class="application-section" id="apply">
+        <div class="container">
+            <div class="section-header">
+                <h2>Apply Now</h2>
+                <p>Fill out the form below and we'll get back to you soon</p>
+            </div>
+
+            <form class="application-form">
+                <div class="form-group">
+                    <label for="full-name">Full Name</label>
+                    <input type="text" id="full-name" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="position">Position Applying For</label>
+                    <select id="position" class="form-control" required>
+                        <option value="">Select a position</option>
+                        <option value="senior-financial-consultant">Senior Financial Consultant</option>
+                        <option value="erp-specialist">ERP Implementation Specialist</option>
+                        <option value="business-analyst">Business Analyst</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="experience">Years of Experience</label>
+                    <input type="number" id="experience" class="form-control" min="0" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="cover-letter">Cover Letter</label>
+                    <textarea id="cover-letter" class="form-control" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="resume">Upload Resume/CV</label>
+                    <div class="file-upload">
+                        <input type="file" id="resume" style="display: none;">
+                        <button type="button" class="file-upload-btn" onclick="document.getElementById('resume').click()">Choose File</button>
+                        <span id="file-name">No file chosen</span>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit Application</button>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        // Theme toggle functionality
+        const savedTheme = localStorage.getItem('theme') || 
+                         (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.body.classList.add(savedTheme + '-mode');
+
+        // Job filter functionality
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelector('.filter-btn.active').classList.remove('active');
+                this.classList.add('active');
+                // Here you would typically filter jobs
+                console.log('Filtering jobs by:', this.textContent);
+            });
+        });
+
+        // File upload display
+        document.getElementById('resume').addEventListener('change', function(e) {
+            const fileName = e.target.files[0] ? e.target.files[0].name : 'No file chosen';
+            document.getElementById('file-name').textContent = fileName;
+        });
+
+        // Form submission
+        document.querySelector('.application-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your application! We will review your information and contact you soon.');
+            this.reset();
+            document.getElementById('file-name').textContent = 'No file chosen';
+        });
+    </script>
+</body>
+</html>

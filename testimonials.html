@@ -1,0 +1,1674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Testimonials | HSBS Business Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== BASE STYLES ===== */
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #e74c3c;
+            --accent-color: #3498db;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --light-text: #fff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f9f9f9;
+            transition: var(--transition);
+        }
+
+        body.light-mode {
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        body.dark-mode {
+            background-color: #1a1a1a;
+            color: #f1f1f1;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .highlight {
+            color: var(--secondary-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== THEME TOGGLE ===== */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .theme-toggle button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .theme-toggle button:hover {
+            background: var(--secondary-color);
+            transform: scale(1.1);
+        }
+
+        /* ===== NAVIGATION ===== */
+        .main-nav {
+            background-color: var(--light-color);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            transition: var(--transition);
+        }
+
+        .dark-mode .main-nav {
+            background-color: #333;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            margin-right: 3rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .logo span {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .dark-mode .logo span {
+            color: var(--light-text);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+            color: var(--primary-color);
+        }
+
+        .dark-mode .nav-links a {
+            color: var(--light-text);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .dark-mode .mobile-menu-btn span {
+            background-color: var(--light-text);
+        }
+
+        /* ===== PAGE HERO ===== */
+        .page-hero {
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonials-hero {
+            background: linear-gradient(135deg, rgba(44, 62, 80, 0.9) 0%, rgba(231, 76, 60, 0.8) 100%);
+            color: white;
+        }
+
+        .dark-mode .testimonials-hero {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(44, 62, 80, 0.8) 100%);
+        }
+
+        .hero-content {
+            max-width: 600px;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-breadcrumb a {
+            color: var(--secondary-color);
+        }
+
+        .hero-breadcrumb i {
+            font-size: 0.8rem;
+        }
+
+        .hero-animation {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .animation-circle {
+            position: absolute;
+            border-radius: 50%;
+            background-color: rgba(52, 152, 219, 0.1);
+        }
+
+        .circle-1 {
+            width: 400px;
+            height: 400px;
+            top: -100px;
+            right: -100px;
+        }
+
+        .circle-2 {
+            width: 600px;
+            height: 600px;
+            top: -200px;
+            right: -200px;
+        }
+
+        .animation-element {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .element-1 {
+            top: 30%;
+            right: 20%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .element-2 {
+            top: 50%;
+            right: 30%;
+            animation: float 8s ease-in-out infinite 1s;
+        }
+
+        .element-3 {
+            top: 40%;
+            right: 10%;
+            animation: float 7s ease-in-out infinite 0.5s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* ===== TESTIMONIALS SECTION ===== */
+        .testimonials-section {
+            padding: 5rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-color);
+        }
+
+        .section-header p {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .testimonials-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .dark-mode .testimonial-card {
+            background-color: #444;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .testimonial-quote {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 3rem;
+            color: rgba(231, 76, 60, 0.2);
+            font-family: Georgia, serif;
+        }
+
+        .testimonial-content {
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            font-style: italic;
+            position: relative;
+        }
+
+        .dark-mode .testimonial-content {
+            color: #ddd;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .author-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .author-position {
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .author-company {
+            font-size: 0.8rem;
+            color: var(--text-color);
+        }
+
+        .dark-mode .author-company {
+            color: #aaa;
+        }
+
+        .testimonial-rating {
+            color: #ffc107;
+            margin-top: 0.5rem;
+        }
+
+        /* ===== VIDEO TESTIMONIALS ===== */
+        .video-testimonials-section {
+            padding: 5rem 0;
+            background-color: var(--light-color);
+        }
+
+        .dark-mode .video-testimonials-section {
+            background-color: #333;
+        }
+
+        .video-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .video-card {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .video-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .video-thumbnail {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .video-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .video-card:hover .video-thumbnail img {
+            transform: scale(1.1);
+        }
+
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background-color: rgba(231, 76, 60, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .video-card:hover .play-button {
+            background-color: var(--secondary-color);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .video-info {
+            padding: 1.5rem;
+            background-color: white;
+        }
+
+        .dark-mode .video-info {
+            background-color: #444;
+        }
+
+        .video-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .video-author {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--secondary-color);
+        }
+
+        /* ===== CASE STUDIES ===== */
+        .case-studies-section {
+            padding: 5rem 0;
+        }
+
+        .case-studies-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .case-study-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .dark-mode .case-study-card {
+            background-color: #444;
+        }
+
+        .case-study-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .case-study-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .case-study-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .case-study-card:hover .case-study-image img {
+            transform: scale(1.1);
+        }
+
+        .case-study-content {
+            padding: 1.5rem;
+        }
+
+        .case-study-badge {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .case-study-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .case-study-stats {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .stat-icon {
+            width: 30px;
+            height: 30px;
+            background-color: rgba(52, 152, 219, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-color);
+        }
+
+        .stat-value {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-color);
+        }
+
+        .dark-mode .stat-label {
+            color: #aaa;
+        }
+
+        .case-study-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .dark-mode .case-study-content p {
+            color: #ddd;
+        }
+
+        .case-study-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary-color);
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .case-study-link:hover {
+            gap: 1rem;
+        }
+
+        /* ===== CTA SECTION ===== */
+        .testimonials-cta-section {
+            padding: 4rem 0;
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+        }
+
+        .dark-mode .testimonials-cta-section {
+            background-color: #222;
+        }
+
+        .cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-container h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .cta-container p {
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .cta-button-primary {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .cta-button-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .dark-mode footer {
+            background-color: #222;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-col {
+            padding: 0 1rem;
+        }
+
+        .footer-logo img {
+            height: 50px;
+            margin-bottom: 1rem;
+        }
+
+        .footer-col p {
+            margin-bottom: 1.5rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer-contact .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-contact i {
+            color: var(--secondary-color);
+        }
+
+        .footer-social {
+            margin-top: 2rem;
+        }
+
+        .footer-social h3 {
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-col h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-col a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: var(--transition);
+        }
+
+        .footer-col a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .footer-badges {
+            margin-top: 2rem;
+            display: grid;
+            gap: 1rem;
+        }
+
+        .badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            width: fit-content;
+        }
+
+        .badge i {
+            color: var(--secondary-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-bottom p {
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 0.5rem;
+        }
+
+        /* ===== BACK TO TOP BUTTON ===== */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+
+        /* ===== MODAL ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            position: relative;
+            width: 80%;
+            max-width: 800px;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .dark-mode .modal-content {
+            background-color: #444;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 30px;
+            height: 30px;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .modal-video {
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            position: relative;
+        }
+
+        .modal-video iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* ===== RESPONSIVE STYLES ===== */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--light-color);
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                gap: 1.5rem;
+                transition: var(--transition);
+            }
+
+            .dark-mode .nav-links {
+                background-color: #333;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .mobile-menu-btn.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .mobile-menu-btn.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .mobile-menu-btn.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .hero-animation {
+                display: none;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .modal-content {
+                width: 95%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .case-study-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="light-mode">
+    <!-- Theme Toggle -->
+    <div class="theme-toggle">
+        <button id="themeToggle">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="HSBS Logo" class="logo-img">
+                    <span>BSPL</span>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="services.html">Services</a>
+                <a href="industries.html">Industries</a>
+                <a href="solutions.html">Solutions</a>
+                <a href="about.html">About Us</a>
+                <a href="testimonials.html" class="active">Testimonials</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Testimonials Hero -->
+    <section class="page-hero testimonials-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Client <span class="highlight">Success Stories</span></h1>
+                <p class="hero-subtitle">Hear from businesses we've helped transform through our financial and business solutions</p>
+                <div class="hero-breadcrumb">
+                    <a href="index.html">Home</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <span>Testimonials</span>
+                </div>
+            </div>
+            <div class="hero-animation">
+                <div class="animation-circle circle-1"></div>
+                <div class="animation-circle circle-2"></div>
+                <div class="animation-element element-1">
+                    <i class="fas fa-quote-left"></i>
+                </div>
+                <div class="animation-element element-2">
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="animation-element element-3">
+                    <i class="fas fa-thumbs-up"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>What Our Clients Say</h2>
+                <p>Don't just take our word for it - here's what our clients have to say about working with us</p>
+            </div>
+
+            <div class="testimonials-container">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"</div>
+                    <div class="testimonial-content">
+                        <p>HSBS transformed our financial operations completely. Their expertise in international accounting standards helped us expand into three new markets with confidence. The team is responsive, knowledgeable, and truly cares about our success.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="images/client-1.jpg" alt="Client">
+                        </div>
+                        <div class="author-info">
+                            <h4>Rajesh Mehta</h4>
+                            <p class="author-position">CEO, TechSolutions Inc.</p>
+                            <p class="author-company">Manufacturing Industry</p>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"</div>
+                    <div class="testimonial-content">
+                        <p>As a startup, we needed financial guidance that was both strategic and practical. HSBS provided exactly that - from setting up our accounting systems to helping secure funding. Their virtual CFO service has been invaluable to our growth.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="images/client-2.jpg" alt="Client">
+                        </div>
+                        <div class="author-info">
+                            <h4>Priya Sharma</h4>
+                            <p class="author-position">Founder, GreenEats</p>
+                            <p class="author-company">FoodTech Startup</p>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"</div>
+                    <div class="testimonial-content">
+                        <p>The tax advisory services from HSBS saved our company over $250,000 in the first year alone. Their deep understanding of cross-border taxation and ability to navigate complex regulations is unmatched. They've become an essential part of our financial team.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="images/client-3.jpg" alt="Client">
+                        </div>
+                        <div class="author-info">
+                            <h4>Michael Johnson</h4>
+                            <p class="author-position">Finance Director, Global Energy Co.</p>
+                            <p class="author-company">Oil & Gas Industry</p>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 4 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"</div>
+                    <div class="testimonial-content">
+                        <p>After struggling with inefficient financial processes, HSBS implemented an ERP system tailored to our retail operations. The results were immediate - 30% reduction in reporting time and much better inventory visibility. Their team executed flawlessly.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="images/client-4.jpg" alt="Client">
+                        </div>
+                        <div class="author-info">
+                            <h4>Ananya Patel</h4>
+                            <p class="author-position">Operations Manager, UrbanFashion</p>
+                            <p class="author-company">Retail Chain</p>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 5 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"</div>
+                    <div class="testimonial-content">
+                        <p>We were facing serious compliance issues when we engaged HSBS. Within months, they had not only resolved all outstanding issues but also implemented systems to prevent future problems. Their legal and financial expertise is truly comprehensive.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="images/client-5.jpg" alt="Client">
+                        </div>
+                        <div class="author-info">
+                            <h4>David Wilson</h4>
+                            <p class="author-position">General Counsel, HealthFirst</p>
+                            <p class="author-company">Healthcare Provider</p>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 6 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"</div>
+                    <div class="testimonial-content">
+                        <p>HSBS provided the financial modeling and analysis we needed to secure Series B funding. Their ability to translate complex financial data into compelling investor materials was instrumental in our successful $15M raise. Highly recommended!</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-image">
+                            <img src="images/client-6.jpg" alt="Client">
+                        </div>
+                        <div class="author-info">
+                            <h4>Sarah Chen</h4>
+                            <p class="author-position">Co-Founder, FinTech Innovations</p>
+                            <p class="author-company">Financial Technology</p>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Testimonials -->
+    <section class="video-testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Video Testimonials</h2>
+                <p>Hear directly from our clients about their experiences</p>
+            </div>
+
+            <div class="video-container">
+                <!-- Video 1 -->
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="images/video-thumb-1.jpg" alt="Video Testimonial">
+                        <div class="play-button" data-video="https://www.youtube.com/embed/example1">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Transforming Financial Operations</h3>
+                        <p class="video-author"><i class="fas fa-user"></i> TechSolutions Inc.</p>
+                    </div>
+                </div>
+
+                <!-- Video 2 -->
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="images/video-thumb-2.jpg" alt="Video Testimonial">
+                        <div class="play-button" data-video="https://www.youtube.com/embed/example2">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Startup Financial Strategy</h3>
+                        <p class="video-author"><i class="fas fa-user"></i> GreenEats</p>
+                    </div>
+                </div>
+
+                <!-- Video 3 -->
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="images/video-thumb-3.jpg" alt="Video Testimonial">
+                        <div class="play-button" data-video="https://www.youtube.com/embed/example3">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>International Tax Success</h3>
+                        <p class="video-author"><i class="fas fa-user"></i> Global Energy Co.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies -->
+    <section class="case-studies-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Case Studies</h2>
+                <p>Detailed examples of how we've helped clients achieve their goals</p>
+            </div>
+
+            <div class="case-studies-container">
+                <!-- Case Study 1 -->
+                <div class="case-study-card">
+                    <div class="case-study-image">
+                        <img src="images/case-study1.jpg" alt="Case Study">
+                    </div>
+                    <div class="case-study-content">
+                        <span class="case-study-badge">Manufacturing</span>
+                        <h3>Streamlining International Operations</h3>
+                        <div class="case-study-stats">
+                            <div class="stat-item">
+                                <div class="stat-icon">
+                                    <i class="fas fa-percentage"></i>
+                                </div>
+                                <div>
+                                    <div class="stat-value">40%</div>
+                                    <div class="stat-label">Cost Reduction</div>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div>
+                                    <div class="stat-value">60%</div>
+                                    <div class="stat-label">Faster Reporting</div>
+                                </div>
+                            </div>
+                        </div>
+                        <p>Implemented unified accounting systems across 5 countries, standardizing processes and enabling real-time financial visibility for a manufacturing client.</p>
+                        <a href="#" class="case-study-link">Read Full Study <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Case Study 2 -->
+                <div class="case-study-card">
+                    <div class="case-study-image">
+                        <img src="images/case-study2.webp" alt="Case Study">
+                    </div>
+                    <div class="case-study-content">
+                        <span class="case-study-badge">Technology</span>
+                        <h3>From Startup to Scaleup</h3>
+                        <div class="case-study-stats">
+                            <div class="stat-item">
+                                <div class="stat-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <div>
+                                    <div class="stat-value">3x</div>
+                                    <div class="stat-label">Revenue Growth</div>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-icon">
+                                    <i class="fas fa-dollar-sign"></i>
+                                </div>
+                                <div>
+                                    <div class="stat-value">$15M</div>
+                                    <div class="stat-label">Funding Raised</div>
+                                </div>
+                            </div>
+                        </div>
+                        <p>Provided financial strategy and investor readiness services to help a SaaS startup scale operations and secure Series B funding.</p>
+                        <a href="#" class="case-study-link">Read Full Study <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Case Study 3 -->
+                <div class="case-study-card">
+                    <div class="case-study-image">
+                        <img src="images/case-study3.jpeg" alt="Case Study">
+                    </div>
+                    <div class="case-study-content">
+                        <span class="case-study-badge">Healthcare</span>
+                        <h3>Compliance Transformation</h3>
+                        <div class="case-study-stats">
+                            <div class="stat-item">
+                                <div class="stat-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div>
+                                    <div class="stat-value">100%</div>
+                                    <div class="stat-label">Compliance</div>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div>
+                                    <div class="stat-value">50%</div>
+                                    <div class="stat-label">Time Saved</div>
+                                </div>
+                            </div>
+                        </div>
+                        <p>Overhauled financial and regulatory compliance systems for a healthcare provider, eliminating audit findings and reducing reporting workload.</p>
+                        <a href="#" class="case-study-link">Read Full Study <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="testimonials-cta-section">
+        <div class="container">
+            <div class="cta-container">
+                <h2>Ready to Experience the HSBS Difference?</h2>
+                <p>Join our growing list of satisfied clients who have transformed their financial operations.</p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="cta-button cta-button-primary">Get Started</a>
+                    <a href="services.html" class="cta-button cta-button-secondary">Our Services</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Modal -->
+    <div class="modal" id="videoModal">
+        <div class="modal-content">
+            <div class="close-modal">
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="modal-video">
+                <iframe id="videoFrame" src="" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col footer-about">
+                <div class="footer-logo">
+                    <img src="images/logo-white.png" alt="HSBS Logo">
+                </div>
+                <p>Collaborating in Business Growth through comprehensive financial and business solutions for global enterprises.</p>
+                
+                <div class="footer-contact">
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>+91 95602 70977</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>hsbspl.55@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>New Delhi - 110076, India</span>
+                    </div>
+                </div>
+                
+                <div class="footer-social">
+                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-col footer-services">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="services.html">Accounting & Bookkeeping</a></li>
+                    <li><a href="services.html">Tax Advisory</a></li>
+                    <li><a href="services.html">Virtual CFO Services</a></li>
+                    <li><a href="services.html">Audit and Assurance</a></li>
+                    <li><a href="services.html">ERP Solutions</a></li>
+                    <li><a href="services.html">New Business Setup</a></li>
+                    <li><a href="services.html">Financial Services</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="industries.html">Industries</a></li>
+                    <li><a href="solutions.html">Solutions</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="testimonials.html">Testimonials</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="blogs.html">Blog</a></li>
+                    <li><a href="carriers.html">Careers</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col footer-legal">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="terms-of-service.html">Terms of Service</a></li>
+                    <li><a href="cookies.html">Cookie Policy</a></li>
+                    <li><a href="disclaimer.html">Disclaimer</a></li>
+                    <li><a href="gdpr-compliance.html">GDPR Compliance</a></li>
+                </ul>
+                
+                <div class="footer-badges">
+                    <div class="badge">
+                        <i class="fas fa-lock"></i>
+                        <span>Secure Payments</span>
+                    </div>
+                    <div class="badge">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Data Protection</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="copyright">
+                <p>&copy; 2025 Hari Sharnam Business Solutions Private Limited. All rights reserved.</p>
+            </div>
+            
+            <div class="footer-extra">
+                <p>Registered Address: B-2, 540, JJ Colony, Madanpur Khadar, Sarita Vihar, New Delhi - 110076 (India)</p>
+                <p>CIN: U74120DL2010PTC200123</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenuBtn.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuBtn.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        // Check for saved theme preference
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme) {
+            body.classList.add(currentTheme);
+            if (currentTheme === 'dark-mode') {
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark-mode');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                localStorage.setItem('theme', 'light-mode');
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+        });
+
+        // Back to Top Button
+        const backToTopBtn = document.querySelector('.back-to-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('active');
+            } else {
+                backToTopBtn.classList.remove('active');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Smooth scrolling for all links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Video Modal Functionality
+        const modal = document.getElementById('videoModal');
+        const videoFrame = document.getElementById('videoFrame');
+        const closeModal = document.querySelector('.close-modal');
+        const playButtons = document.querySelectorAll('.play-button');
+
+        playButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const videoUrl = button.getAttribute('data-video');
+                videoFrame.src = videoUrl;
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        closeModal.addEventListener('click', () => {
+            videoFrame.src = '';
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                videoFrame.src = '';
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Animate testimonials on scroll
+        const testimonialCards = document.querySelectorAll('.testimonial-card');
+        const videoCards = document.querySelectorAll('.video-card');
+        const caseStudyCards = document.querySelectorAll('.case-study-card');
+
+        const animateOnScroll = () => {
+            testimonialCards.forEach((card, index) => {
+                const cardPosition = card.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+
+                if (cardPosition < screenPosition) {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }
+            });
+
+            videoCards.forEach((card, index) => {
+                const cardPosition = card.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+
+                if (cardPosition < screenPosition) {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }
+            });
+
+            caseStudyCards.forEach((card, index) => {
+                const cardPosition = card.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+
+                if (cardPosition < screenPosition) {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }
+            });
+        };
+
+        // Set initial state
+        testimonialCards.forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = `opacity 0.5s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s`;
+        });
+
+        videoCards.forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = `opacity 0.5s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s`;
+        });
+
+        caseStudyCards.forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = `opacity 0.5s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s`;
+        });
+
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+    </script>
+</body>
+</html>

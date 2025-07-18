@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Insights | HSBS Blog</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== BASE STYLES ===== */
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #e74c3c;
+            --accent-color: #3498db;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --light-text: #fff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f9f9f9;
+        }
+
+        body.dark-mode {
+            background-color: #1a1a1a;
+            color: #f1f1f1;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== BLOG HERO ===== */
+        .blog-hero {
+            background: linear-gradient(135deg, rgba(44, 62, 80, 0.9) 0%, rgba(52, 152, 219, 0.8) 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+
+        .dark-mode .blog-hero {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(44, 62, 80, 0.8) 100%);
+        }
+
+        .blog-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .blog-hero p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* ===== BLOG CONTENT ===== */
+        .blog-section {
+            padding: 60px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-color);
+        }
+
+        /* Blog Grid */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .blog-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .dark-mode .blog-card {
+            background-color: #333;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .blog-image {
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .blog-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .blog-card:hover .blog-image img {
+            transform: scale(1.05);
+        }
+
+        .blog-content {
+            padding: 25px;
+        }
+
+        .blog-meta {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .dark-mode .blog-meta {
+            color: #aaa;
+        }
+
+        .blog-meta span {
+            display: flex;
+            align-items: center;
+            margin-right: 15px;
+        }
+
+        .blog-meta i {
+            margin-right: 5px;
+            color: var(--secondary-color);
+        }
+
+        .blog-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .dark-mode .blog-card h3 {
+            color: var(--light-text);
+        }
+
+        .blog-excerpt {
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .dark-mode .blog-excerpt {
+            color: #ccc;
+        }
+
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .read-more i {
+            margin-left: 5px;
+            transition: var(--transition);
+        }
+
+        .read-more:hover i {
+            margin-left: 8px;
+        }
+
+        /* Categories */
+        .blog-categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+            justify-content: center;
+        }
+
+        .category-btn {
+            padding: 8px 15px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .dark-mode .category-btn {
+            background-color: #333;
+            border-color: #555;
+            color: white;
+        }
+
+        .category-btn.active, 
+        .category-btn:hover {
+            background-color: var(--secondary-color);
+            color: white;
+            border-color: var(--secondary-color);
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        .page-item {
+            margin: 0 5px;
+        }
+
+        .page-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: white;
+            color: var(--primary-color);
+            box-shadow: var(--shadow);
+        }
+
+        .dark-mode .page-link {
+            background-color: #333;
+            color: white;
+        }
+
+        .page-link.active, 
+        .page-link:hover {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .blog-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body class="light-mode">
+    <!-- Blog Hero -->
+    <section class="blog-hero">
+        <div class="container">
+            <h1>Business Insights</h1>
+            <p>Expert analysis, industry trends, and practical advice for your business growth</p>
+        </div>
+    </section>
+
+    <!-- Blog Content -->
+    <section class="blog-section">
+        <div class="container">
+            <div class="blog-categories">
+                <button class="category-btn active">All Topics</button>
+                <button class="category-btn">Finance</button>
+                <button class="category-btn">Taxation</button>
+                <button class="category-btn">Technology</button>
+                <button class="category-btn">Strategy</button>
+                <button class="category-btn">Compliance</button>
+            </div>
+
+            <div class="blog-grid">
+                <!-- Blog Post 1 -->
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <img src="images/blog-finance.jpg" alt="Financial Planning">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar-alt"></i> June 15, 2023</span>
+                            <span><i class="far fa-folder"></i> Finance</span>
+                        </div>
+                        <h3>5 Financial Planning Strategies for SMEs in 2023</h3>
+                        <p class="blog-excerpt">Discover essential financial planning techniques to help your small or medium business thrive in the current economic climate...</p>
+                        <a href="blog-single.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Blog Post 2 -->
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <img src="images/blog-tax.jpg" alt="Tax Changes">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar-alt"></i> May 28, 2023</span>
+                            <span><i class="far fa-folder"></i> Taxation</span>
+                        </div>
+                        <h3>Understanding the Latest Tax Law Changes</h3>
+                        <p class="blog-excerpt">A comprehensive breakdown of the recent tax reforms and how they might impact your business operations and planning...</p>
+                        <a href="blog-single.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Blog Post 3 -->
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <img src="images/blog-erp.jpg" alt="ERP Systems">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar-alt"></i> April 10, 2023</span>
+                            <span><i class="far fa-folder"></i> Technology</span>
+                        </div>
+                        <h3>Choosing the Right ERP System for Your Business</h3>
+                        <p class="blog-excerpt">Key considerations when selecting an ERP solution that aligns with your business size, industry, and growth objectives...</p>
+                        <a href="blog-single.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Blog Post 4 -->
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <img src="images/blog-growth.jpg" alt="Business Growth">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar-alt"></i> March 22, 2023</span>
+                            <span><i class="far fa-folder"></i> Strategy</span>
+                        </div>
+                        <h3>Scaling Your Business: When and How to Expand</h3>
+                        <p class="blog-excerpt">Identify the right growth signals and learn strategic approaches to scaling your operations without overextending...</p>
+                        <a href="blog-single.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Blog Post 5 -->
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <img src="images/blog-compliance.jpg" alt="Compliance">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar-alt"></i> February 15, 2023</span>
+                            <span><i class="far fa-folder"></i> Compliance</span>
+                        </div>
+                        <h3>Navigating International Business Compliance</h3>
+                        <p class="blog-excerpt">Essential compliance considerations for businesses looking to expand operations across borders and jurisdictions...</p>
+                        <a href="blog-single.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Blog Post 6 -->
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <img src="images/blog-ai.jpg" alt="AI in Finance">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar-alt"></i> January 30, 2023</span>
+                            <span><i class="far fa-folder"></i> Technology</span>
+                        </div>
+                        <h3>The Role of AI in Modern Financial Management</h3>
+                        <p class="blog-excerpt">How artificial intelligence is transforming financial forecasting, risk assessment, and decision-making processes...</p>
+                        <a href="blog-single.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+            </div>
+
+            <div class="pagination">
+                <div class="page-item">
+                    <a href="#" class="page-link"><i class="fas fa-chevron-left"></i></a>
+                </div>
+                <div class="page-item">
+                    <a href="#" class="page-link active">1</a>
+                </div>
+                <div class="page-item">
+                    <a href="#" class="page-link">2</a>
+                </div>
+                <div class="page-item">
+                    <a href="#" class="page-link">3</a>
+                </div>
+                <div class="page-item">
+                    <a href="#" class="page-link"><i class="fas fa-chevron-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Theme toggle functionality
+        const savedTheme = localStorage.getItem('theme') || 
+                         (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.body.classList.add(savedTheme + '-mode');
+
+        // Category filter functionality
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelector('.category-btn.active').classList.remove('active');
+                this.classList.add('active');
+                // Here you would typically filter blog posts
+                console.log('Filtering by:', this.textContent);
+            });
+        });
+    </script>
+</body>
+</html>

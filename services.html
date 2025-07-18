@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | HSBS Business Solutions</title>
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== BASE STYLES ===== */
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #e74c3c;
+            --accent-color: #3498db;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --light-text: #fff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f9f9f9;
+            transition: var(--transition);
+        }
+
+        body.light-mode {
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        body.dark-mode {
+            background-color: #1a1a1a;
+            color: #f1f1f1;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .highlight {
+            color: var(--secondary-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== THEME TOGGLE ===== */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .theme-toggle button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .theme-toggle button:hover {
+            background: var(--secondary-color);
+            transform: scale(1.1);
+        }
+
+        /* ===== NAVIGATION ===== */
+        .main-nav {
+            background-color: var(--light-color);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            transition: var(--transition);
+        }
+
+        .dark-mode .main-nav {
+            background-color: #333;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            margin-right: 3rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .logo span {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .dark-mode .logo span {
+            color: var(--light-text);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+            color: var(--primary-color);
+        }
+
+        .dark-mode .nav-links a {
+            color: var(--light-text);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .dark-mode .mobile-menu-btn span {
+            background-color: var(--light-text);
+        }
+
+        /* ===== PAGE HERO ===== */
+        .page-hero {
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .services-hero {
+            background: linear-gradient(135deg, rgba(44, 62, 80, 0.9) 0%, rgba(52, 152, 219, 0.8) 100%);
+            color: white;
+        }
+
+        .dark-mode .services-hero {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(44, 62, 80, 0.8) 100%);
+        }
+
+        .hero-content {
+            max-width: 600px;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-breadcrumb a {
+            color: var(--secondary-color);
+        }
+
+        .hero-breadcrumb i {
+            font-size: 0.8rem;
+        }
+
+        .hero-animation {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .animation-circle {
+            position: absolute;
+            border-radius: 50%;
+            background-color: rgba(231, 76, 60, 0.1);
+        }
+
+        .circle-1 {
+            width: 400px;
+            height: 400px;
+            top: -100px;
+            right: -100px;
+        }
+
+        .circle-2 {
+            width: 600px;
+            height: 600px;
+            top: -200px;
+            right: -200px;
+        }
+
+        .animation-element {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .element-1 {
+            top: 30%;
+            right: 20%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .element-2 {
+            top: 50%;
+            right: 30%;
+            animation: float 8s ease-in-out infinite 1s;
+        }
+
+        .element-3 {
+            top: 40%;
+            right: 10%;
+            animation: float 7s ease-in-out infinite 0.5s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* ===== SERVICES GRID ===== */
+        .services-grid-section {
+            padding: 5rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-color);
+        }
+
+        .section-header p {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .services-category {
+            margin-bottom: 3rem;
+        }
+
+        .category-title {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--primary-color);
+        }
+
+        .dark-mode .category-title {
+            color: var(--light-text);
+        }
+
+        .category-title i {
+            color: var(--secondary-color);
+        }
+
+        .services-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .dark-mode .service-card {
+            background-color: #333;
+            color: var(--light-text);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(231, 76, 60, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+        }
+
+        .service-card h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            margin-bottom: 1.5rem;
+        }
+
+        .dark-mode .service-card p {
+            color: #ddd;
+        }
+
+        .service-card ul {
+            margin-bottom: 2rem;
+            padding-left: 1.5rem;
+        }
+
+        .service-card li {
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .dark-mode .service-card li {
+            color: #ddd;
+        }
+
+        .service-card li::before {
+            content: '•';
+            color: var(--secondary-color);
+            position: absolute;
+            left: -1rem;
+        }
+
+        .service-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary-color);
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .service-cta:hover {
+            gap: 1rem;
+        }
+
+        /* ===== SERVICE PROCESS ===== */
+        .service-process-section {
+            padding: 5rem 0;
+            background-color: var(--light-color);
+        }
+
+        .dark-mode .service-process-section {
+            background-color: #333;
+        }
+
+        .process-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .process-image {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .process-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .process-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            font-weight: 600;
+        }
+
+        .process-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .process-content p {
+            margin-bottom: 2rem;
+        }
+
+        .dark-mode .process-content p {
+            color: #ddd;
+        }
+
+        .process-steps {
+            display: grid;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .step {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .step-info h4 {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .step-info p {
+            margin-bottom: 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* ===== CTA SECTION ===== */
+        .service-cta-section {
+            padding: 4rem 0;
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+        }
+
+        .dark-mode .service-cta-section {
+            background-color: #222;
+        }
+
+        .cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-container h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .cta-container p {
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .cta-button-primary {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .cta-button-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .dark-mode footer {
+            background-color: #222;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-col {
+            padding: 0 1rem;
+        }
+
+        .footer-logo img {
+            height: 50px;
+            margin-bottom: 1rem;
+        }
+
+        .footer-col p {
+            margin-bottom: 1.5rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer-contact .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-contact i {
+            color: var(--secondary-color);
+        }
+
+        .footer-social {
+            margin-top: 2rem;
+        }
+
+        .footer-social h3 {
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-col h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-col a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: var(--transition);
+        }
+
+        .footer-col a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .footer-badges {
+            margin-top: 2rem;
+            display: grid;
+            gap: 1rem;
+        }
+
+        .badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            width: fit-content;
+        }
+
+        .badge i {
+            color: var(--secondary-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-bottom p {
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 0.5rem;
+        }
+
+        /* ===== BACK TO TOP BUTTON ===== */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+
+        /* ===== RESPONSIVE STYLES ===== */
+        @media (max-width: 992px) {
+            .process-container {
+                grid-template-columns: 1fr;
+            }
+
+            .process-image {
+                max-width: 600px;
+                margin: 0 auto;
+            }
+
+            .process-content {
+                text-align: center;
+            }
+
+            .step {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--light-color);
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                gap: 1.5rem;
+                transition: var(--transition);
+            }
+
+            .dark-mode .nav-links {
+                background-color: #333;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .mobile-menu-btn.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .mobile-menu-btn.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .mobile-menu-btn.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .hero-animation {
+                display: none;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .process-content h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body class="light-mode">
+    <!-- Theme Toggle -->
+    <div class="theme-toggle">
+        <button id="themeToggle">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="HSBS Logo" class="logo-img">
+                    <span>BSPL</span>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="services.html" class="active">Services</a>
+                <a href="industries.html">Industries</a>
+                <a href="solutions.html">Solutions</a>
+                <a href="about.html">About Us</a>
+                <a href="testimonials.html">Testimonials</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Services Hero -->
+    <section class="page-hero services-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Our <span class="highlight">Comprehensive Services</span></h1>
+                <p class="hero-subtitle">End-to-end financial and business solutions tailored to your specific needs and industry requirements</p>
+                <div class="hero-breadcrumb">
+                    <a href="index.html">Home</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <span>Services</span>
+                </div>
+            </div>
+            <div class="hero-animation">
+                <div class="animation-circle circle-1"></div>
+                <div class="animation-circle circle-2"></div>
+                <div class="animation-element element-1">
+                    <i class="fas fa-calculator"></i>
+                </div>
+                <div class="animation-element element-2">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                </div>
+                <div class="animation-element element-3">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="services-grid-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Service Portfolio</h2>
+                <p>Comprehensive solutions designed to drive your business growth</p>
+            </div>
+
+            <div class="services-category">
+                <h3 class="category-title">
+                    <i class="fas fa-calculator"></i>
+                    Accounting & Compliance Services
+                </h3>
+                <div class="services-row">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h4>Bookkeeping</h4>
+                        <p>Comprehensive recording of financial transactions with precision and accuracy.</p>
+                        <ul>
+                            <li>Daily transaction recording</li>
+                            <li>Bank reconciliations</li>
+                            <li>Financial statement preparation</li>
+                            <li>Accounts payable/receivable</li>
+                            <li>Month-end close support</li>
+                        </ul>
+                        <a href="contact.html" class="service-cta">Get Started <i class="fas fa-arrow-right"></i></a>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h4>Global Accounting</h4>
+                        <p>International accounting standards compliance for multinational operations.</p>
+                        <ul>
+                            <li>US GAAP compliance</li>
+                            <li>IFRS reporting</li>
+                            <li>Multi-currency accounting</li>
+                            <li>Foreign exchange management</li>
+                            <li>Transfer pricing documentation</li>
+                        </ul>
+                        <a href="contact.html" class="service-cta">Get Started <i class="fas fa-arrow-right"></i></a>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-file-invoice"></i>
+                        </div>
+                        <h4>Tax Compliance</h4>
+                        <p>End-to-end tax filing and compliance services across jurisdictions.</p>
+                        <ul>
+                            <li>GST filing & advisory</li>
+                            <li>Income tax compliance</li>
+                            <li>International tax treaties</li>
+                            <li>Tax planning strategies</li>
+                            <li>Tax audit representation</li>
+                        </ul>
+                        <a href="contact.html" class="service-cta">Get Started <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="services-category">
+                <h3 class="category-title">
+                    <i class="fas fa-briefcase"></i>
+                    Business Advisory Services
+                </h3>
+                <div class="services-row">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h4>Virtual CFO</h4>
+                        <p>Executive-level financial guidance without the full-time executive cost.</p>
+                        <ul>
+                            <li>Financial strategy development</li>
+                            <li>Investor relations management</li>
+                            <li>Cash flow optimization</li>
+                            <li>Budgeting & forecasting</li>
+                            <li>Financial risk assessment</li>
+                        </ul>
+                        <a href="contact.html" class="service-cta">Get Started <i class="fas fa-arrow-right"></i></a>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h4>Business Setup</h4>
+                        <p>Complete assistance in establishing your business entity.</p>
+                        <ul>
+                            <li>Company registration</li>
+                            <li>Licenses & permits</li>
+                            <li>Compliance framework</li>
+                            <li>Bank account setup</li>
+                            <li>Tax registration</li>
+                        </ul>
+                        <a href="contact.html" class="service-cta">Get Started <i class="fas fa-arrow-right"></i></a>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h4>M&A Advisory</h4>
+                        <p>Strategic guidance for mergers, acquisitions and divestitures.</p>
+                        <ul>
+                            <li>Due diligence services</li>
+                            <li>Business valuation</li>
+                            <li>Deal structuring</li>
+                            <li>Post-merger integration</li>
+                            <li>Transaction documentation</li>
+                        </ul>
+                        <a href="contact.html" class="service-cta">Get Started <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="services-category">
+                <h3 class="category-title">
+                    <i class="fas fa-search-dollar"></i>
+                    Audit & Assurance Services
+                </h3>
+                <div class="services-row">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <h4>Financial Audit</h4>
+                        <p>Independent examination of financial statements for accuracy.</p>
+                        <ul>
+                            <li>Statutory audits</li>
+                            <li>Internal audits</li>
+                            <li>Compliance audits</li>
+                            <li>Special purpose audits</li>
+                            <li>Management letter preparation</li>
+                        </ul>
+                        <a href="contact.html" class="service-cta">Get Started <i class="fas fa-arrow-right"></i></a>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4>Risk Advisory</h4>
+                        <p>Identification and mitigation of business risks.</p>
+                        <ul>
+                            <li>Internal control evaluation</li>
+                            <li>Fraud risk assessment</li>
+                            <li>Operational risk management</li>
+                            <li>Compliance risk analysis</li>
+                            <li>Risk mitigation strategies</li>
+                        </ul>
+                        <a href="contact.html" class="service-cta">Get Started <i class="fas fa-arrow-right"></i></a>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                        <h4>Forensic Accounting</h4>
+                        <p>Investigation of financial discrepancies and fraud.</p>
+                        <ul>
+                            <li>Fraud investigation</li>
+                            <li>Dispute resolution</li>
+                            <li>Litigation support</li>
+                            <li>Asset tracing</li>
+                            <li>Expert witness testimony</li>
+                        </ul>
+                        <a href="contact.html" class="service-cta">Get Started <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Process -->
+    <section class="service-process-section">
+        <div class="container">
+            <div class="process-container">
+                <div class="process-image">
+                    <img src="images/service-process.jpg" alt="Our Service Process">
+                    <div class="process-badge">
+                        <span>Proven Methodology</span>
+                    </div>
+                </div>
+                <div class="process-content">
+                    <h2>Our Service Delivery Process</h2>
+                    <p>We follow a structured approach to ensure consistent quality and maximum value for our clients</p>
+                    
+                    <div class="process-steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-info">
+                                <h4>Discovery & Planning</h4>
+                                <p>We begin with a thorough consultation to understand your business needs, challenges, and objectives. Our team analyzes your requirements to develop a customized approach.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-info">
+                                <h4>Solution Design</h4>
+                                <p>Based on our discovery, we design a tailored solution with clear milestones, deliverables, and success metrics. We present our approach for your approval before proceeding.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-info">
+                                <h4>Implementation</h4>
+                                <p>Our dedicated team executes the solution with regular progress updates. We maintain open communication channels to address any questions or adjustments needed.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-info">
+                                <h4>Review & Optimization</h4>
+                                <p>After implementation, we conduct a comprehensive review and provide recommendations for continuous improvement to maximize your return on investment.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="contact.html" class="cta-button">Start Your Project</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="service-cta-section">
+        <div class="container">
+            <div class="cta-container">
+                <div class="cta-content">
+                    <h2>Ready to Transform Your Business?</h2>
+                    <p>Our experts are ready to discuss your specific requirements and craft a customized solution that drives growth and efficiency.</p>
+                </div>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="cta-button-primary">Get in Touch</a>
+                    <a href="tel:+919560270977" class="cta-button-secondary">
+                        <i class="fas fa-phone"></i> Call Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col footer-about">
+                <div class="footer-logo">
+                    <img src="images/logo-white.png" alt="HSBS Logo">
+                </div>
+                <p>Collaborating in Business Growth through comprehensive financial and business solutions for global enterprises.</p>
+                
+                <div class="footer-contact">
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>+91 95602 70977</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>hsbspl.55@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>New Delhi - 110076, India</span>
+                    </div>
+                </div>
+                
+                <div class="footer-social">
+                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-col footer-services">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="services.html">Accounting & Bookkeeping</a></li>
+                    <li><a href="services.html">Tax Advisory</a></li>
+                    <li><a href="services.html">Virtual CFO Services</a></li>
+                    <li><a href="services.html">Audit and Assurance</a></li>
+                    <li><a href="services.html">ERP Solutions</a></li>
+                    <li><a href="services.html">New Business Setup</a></li>
+                    <li><a href="services.html">Financial Services</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="industries.html">Industries</a></li>
+                    <li><a href="solutions.html">Solutions</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="testimonials.html">Testimonials</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="blogs.html">Blog</a></li>
+                    <li><a href="carriers.html">Careers</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col footer-legal">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="terms-of-service.html">Terms of Service</a></li>
+                    <li><a href="carriers.html">Cookie Policy</a></li>
+                    <li><a href="disclaimer.html">Disclaimer</a></li>
+                    <li><a href="gdpr-compliance.html">GDPR Compliance</a></li>
+                </ul>
+                
+                <div class="footer-badges">
+                    <div class="badge">
+                        <i class="fas fa-lock"></i>
+                        <span>Secure Payments</span>
+                    </div>
+                    <div class="badge">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Data Protection</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="copyright">
+                <p>&copy; 2025 Hari Sharnam Business Solutions Private Limited. All rights reserved.</p>
+            </div>
+            
+            <div class="footer-extra">
+                <p>Registered Address: B-2, 540, JJ Colony, Madanpur Khadar, Sarita Vihar, New Delhi - 110076 (India)</p>
+                <p>CIN: U74120DL2010PTC200123</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenuBtn.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuBtn.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        // Check for saved theme preference
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme) {
+            body.classList.add(currentTheme);
+            if (currentTheme === 'dark-mode') {
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark-mode');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                localStorage.setItem('theme', 'light-mode');
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+        });
+
+        // Back to Top Button
+        const backToTopBtn = document.querySelector('.back-to-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('active');
+            } else {
+                backToTopBtn.classList.remove('active');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Smooth scrolling for all links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Animate service cards on scroll
+        const serviceCards = document.querySelectorAll('.service-card');
+
+        const animateOnScroll = () => {
+            serviceCards.forEach(card => {
+                const cardPosition = card.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+
+                if (cardPosition < screenPosition) {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }
+            });
+        };
+
+        // Set initial state
+        serviceCards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        });
+
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+    </script>
+</body>
+</html>

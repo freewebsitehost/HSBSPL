@@ -1,0 +1,1494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | HSBS Business Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== BASE STYLES ===== */
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #e74c3c;
+            --accent-color: #3498db;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --light-text: #fff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f9f9f9;
+            transition: var(--transition);
+        }
+
+        body.light-mode {
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        body.dark-mode {
+            background-color: #1a1a1a;
+            color: #f1f1f1;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .highlight {
+            color: var(--secondary-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== THEME TOGGLE ===== */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .theme-toggle button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .theme-toggle button:hover {
+            background: var(--secondary-color);
+            transform: scale(1.1);
+        }
+
+        /* ===== NAVIGATION ===== */
+        .main-nav {
+            background-color: var(--light-color);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            transition: var(--transition);
+        }
+
+        .dark-mode .main-nav {
+            background-color: #333;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            margin-right: 3rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .logo span {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .dark-mode .logo span {
+            color: var(--light-text);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+            color: var(--primary-color);
+        }
+
+        .dark-mode .nav-links a {
+            color: var(--light-text);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .dark-mode .mobile-menu-btn span {
+            background-color: var(--light-text);
+        }
+
+        /* ===== PAGE HERO ===== */
+        .page-hero {
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-hero {
+            background: linear-gradient(135deg, rgba(44, 62, 80, 0.9) 0%, rgba(52, 152, 219, 0.8) 100%);
+            color: white;
+        }
+
+        .dark-mode .about-hero {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(44, 62, 80, 0.8) 100%);
+        }
+
+        .hero-content {
+            max-width: 600px;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-breadcrumb a {
+            color: var(--secondary-color);
+        }
+
+        .hero-breadcrumb i {
+            font-size: 0.8rem;
+        }
+
+        .hero-animation {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .animation-circle {
+            position: absolute;
+            border-radius: 50%;
+            background-color: rgba(231, 76, 60, 0.1);
+        }
+
+        .circle-1 {
+            width: 400px;
+            height: 400px;
+            top: -100px;
+            right: -100px;
+        }
+
+        .circle-2 {
+            width: 600px;
+            height: 600px;
+            top: -200px;
+            right: -200px;
+        }
+
+        .animation-element {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .element-1 {
+            top: 30%;
+            right: 20%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .element-2 {
+            top: 50%;
+            right: 30%;
+            animation: float 8s ease-in-out infinite 1s;
+        }
+
+        .element-3 {
+            top: 40%;
+            right: 10%;
+            animation: float 7s ease-in-out infinite 0.5s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* ===== ABOUT CONTENT ===== */
+        .about-content-section {
+            padding: 5rem 0;
+        }
+
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .experience-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            font-weight: 600;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .dark-mode .about-text p {
+            color: #ddd;
+        }
+
+        .mission-vision {
+            display: grid;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .mission, .vision {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .dark-mode .mission, 
+        .dark-mode .vision {
+            background-color: #333;
+        }
+
+        .mission h3, .vision h3 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary-color);
+        }
+
+        /* ===== VALUES SECTION ===== */
+        .values-section {
+            padding: 5rem 0;
+            background-color: var(--light-color);
+        }
+
+        .dark-mode .values-section {
+            background-color: #333;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-color);
+        }
+
+        .section-header p {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .values-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .value-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .dark-mode .value-card {
+            background-color: #444;
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background-color: rgba(231, 76, 60, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary-color);
+            font-size: 2rem;
+        }
+
+        .value-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .value-card p {
+            color: var(--text-color);
+        }
+
+        .dark-mode .value-card p {
+            color: #ddd;
+        }
+
+        /* ===== TEAM SECTION ===== */
+        .team-section {
+            padding: 5rem 0;
+        }
+
+        .team-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .team-member {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .dark-mode .team-member {
+            background-color: #444;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+        }
+
+        .member-image {
+            position: relative;
+            height: 350px;
+            overflow: hidden;
+        }
+
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .team-member:hover .member-image img {
+            transform: scale(1.05);
+        }
+
+        .member-social {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            display: flex;
+            gap: 0.5rem;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .team-member:hover .member-social {
+            opacity: 1;
+        }
+
+        .member-social a {
+            width: 40px;
+            height: 40px;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .member-social a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+
+        .member-content {
+            padding: 1.5rem;
+        }
+
+        .team-member h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .position {
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .experience {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .background {
+            margin-bottom: 1.5rem;
+        }
+
+        .dark-mode .background {
+            color: #ddd;
+        }
+
+        .member-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .member-skills span {
+            background-color: rgba(52, 152, 219, 0.1);
+            color: var(--accent-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .dark-mode .member-skills span {
+            background-color: rgba(52, 152, 219, 0.2);
+        }
+
+        /* ===== HISTORY SECTION ===== */
+        .history-section {
+            padding: 5rem 0;
+            background-color: var(--light-color);
+        }
+
+        .dark-mode .history-section {
+            background-color: #333;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50px;
+            width: 2px;
+            height: 100%;
+            background-color: var(--secondary-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 100px;
+            margin-bottom: 3rem;
+        }
+
+        .timeline-year {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 80px;
+            height: 80px;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 700;
+            box-shadow: var(--shadow);
+        }
+
+        .timeline-content {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+
+        .dark-mode .timeline-content {
+            background-color: #444;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        .timeline-content p {
+            margin-bottom: 0;
+        }
+
+        .dark-mode .timeline-content p {
+            color: #ddd;
+        }
+
+        /* ===== CTA SECTION ===== */
+        .about-cta-section {
+            padding: 4rem 0;
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+        }
+
+        .dark-mode .about-cta-section {
+            background-color: #222;
+        }
+
+        .cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-container h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .cta-container p {
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .cta-button-primary {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .cta-button-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .dark-mode footer {
+            background-color: #222;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-col {
+            padding: 0 1rem;
+        }
+
+        .footer-logo img {
+            height: 50px;
+            margin-bottom: 1rem;
+        }
+
+        .footer-col p {
+            margin-bottom: 1.5rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer-contact .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-contact i {
+            color: var(--secondary-color);
+        }
+
+        .footer-social {
+            margin-top: 2rem;
+        }
+
+        .footer-social h3 {
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-col h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-col a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: var(--transition);
+        }
+
+        .footer-col a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .footer-badges {
+            margin-top: 2rem;
+            display: grid;
+            gap: 1rem;
+        }
+
+        .badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            width: fit-content;
+        }
+
+        .badge i {
+            color: var(--secondary-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-bottom p {
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 0.5rem;
+        }
+
+        /* ===== BACK TO TOP BUTTON ===== */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+
+        /* ===== RESPONSIVE STYLES ===== */
+        @media (max-width: 992px) {
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                max-width: 600px;
+                margin: 0 auto;
+            }
+
+            .about-text {
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--light-color);
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                gap: 1.5rem;
+                transition: var(--transition);
+            }
+
+            .dark-mode .nav-links {
+                background-color: #333;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .mobile-menu-btn.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .mobile-menu-btn.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .mobile-menu-btn.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .hero-animation {
+                display: none;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .timeline::before {
+                left: 40px;
+            }
+
+            .timeline-item {
+                padding-left: 80px;
+            }
+
+            .timeline-year {
+                width: 60px;
+                height: 60px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body class="light-mode">
+    <!-- Theme Toggle -->
+    <div class="theme-toggle">
+        <button id="themeToggle">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="HSBS Logo" class="logo-img">
+                    <span>BSPL</span>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="services.html">Services</a>
+                <a href="industries.html">Industries</a>
+                <a href="solutions.html">Solutions</a>
+                <a href="about.html" class="active">About Us</a>
+                <a href="testimonials.html">Testimonials</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- About Hero -->
+    <section class="page-hero about-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Our <span class="highlight">Story</span></h1>
+                <p class="hero-subtitle">Collaborating in business growth since 2010 with expertise and dedication</p>
+                <div class="hero-breadcrumb">
+                    <a href="index.html">Home</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <span>About Us</span>
+                </div>
+            </div>
+            <div class="hero-animation">
+                <div class="animation-circle circle-1"></div>
+                <div class="animation-circle circle-2"></div>
+                <div class="animation-element element-1">
+                    <i class="fas fa-history"></i>
+                </div>
+                <div class="animation-element element-2">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="animation-element element-3">
+                    <i class="fas fa-star"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Content -->
+    <section class="about-content-section">
+        <div class="container">
+            <div class="about-container">
+                <div class="about-image">
+                    <img src="images/about-company.jpg" alt="Our Company">
+                    <div class="experience-badge">
+                        <span>15+ Years Experience</span>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <h2>Who We Are</h2>
+                    <p>Hari Sharnam Business Solutions Private Limited is a premier financial and business consultancy firm based in New Delhi, India, serving clients globally across multiple industries and jurisdictions.</p>
+                    <p>Founded in 2010, we have grown from a small accounting firm to a comprehensive business solutions provider with expertise in international accounting standards, tax compliance, and strategic financial advisory.</p>
+                    
+                    <div class="mission-vision">
+                        <div class="mission">
+                            <h3><i class="fas fa-bullseye"></i> Our Mission</h3>
+                            <p>To empower businesses with comprehensive financial solutions that drive growth, ensure compliance, and optimize performance through innovative strategies and expert guidance.</p>
+                        </div>
+                        
+                        <div class="vision">
+                            <h3><i class="fas fa-eye"></i> Our Vision</h3>
+                            <p>To be recognized as the most trusted business growth partner for enterprises navigating the complexities of global financial operations and regulatory environments.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Core Values</h2>
+                <p>The principles that guide everything we do</p>
+            </div>
+
+            <div class="values-container">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Integrity</h3>
+                    <p>We maintain the highest ethical standards in all our dealings, ensuring transparency and honesty in every client relationship.</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Innovation</h3>
+                    <p>We continuously seek creative solutions to complex business challenges, staying ahead of industry trends and technological advancements.</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Excellence</h3>
+                    <p>We strive for superior quality in every service we deliver and every interaction we have, setting high standards for ourselves and our clients.</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Collaboration</h3>
+                    <p>We work as partners with our clients, understanding that their success is our success, and fostering long-term relationships built on trust.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Meet Our Leadership</h2>
+                <p>The experienced professionals guiding your success</p>
+            </div>
+
+            <div class="team-container">
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="images/team-1.jpg" alt="Legal Expert">
+                        <div class="member-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                    <div class="member-content">
+                        <h3>Legal & Compliance Expert</h3>
+                        <p class="position">Bachelor of Law (L.L.B.) & Bachelor of Commerce</p>
+                                                <p class="experience">6+ years experience in legal compliance and corporate governance</p>
+                        <div class="background">
+                            <p>Specializes in corporate law, contract drafting, and regulatory compliance across multiple jurisdictions with expertise in international business regulations.</p>
+                        </div>
+                        <div class="member-skills">
+                            <span>Corporate Law</span>
+                            <span>Compliance</span>
+                            <span>Contract Drafting</span>
+                            <span>Regulatory Affairs</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="images/team-2.jpg" alt="Finance Expert">
+                        <div class="member-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                    <div class="member-content">
+                        <h3>Finance & Accounting Expert</h3>
+                        <p class="position">Chartered Accountant (CA)</p>
+                        <p class="experience">12+ years in financial management and accounting</p>
+                        <div class="background">
+                            <p>Expert in financial reporting, tax planning, and business strategy with extensive experience in international accounting standards and cross-border transactions.</p>
+                        </div>
+                        <div class="member-skills">
+                            <span>Financial Reporting</span>
+                            <span>Tax Planning</span>
+                            <span>IFRS</span>
+                            <span>Business Strategy</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="images/team-3.jpg" alt="Business Consultant">
+                        <div class="member-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                    <div class="member-content">
+                        <h3>Business Growth Consultant</h3>
+                        <p class="position">MBA in International Business</p>
+                        <p class="experience">8+ years in business development</p>
+                        <div class="background">
+                            <p>Specializes in market entry strategies, business process optimization, and scaling operations for SMEs and multinational corporations.</p>
+                        </div>
+                        <div class="member-skills">
+                            <span>Business Strategy</span>
+                            <span>Market Entry</span>
+                            <span>Process Optimization</span>
+                            <span>Growth Planning</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- History Section -->
+    <section class="history-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Journey</h2>
+                <p>Key milestones in our growth and development</p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">2010</div>
+                    <div class="timeline-content">
+                        <h3>Company Founded</h3>
+                        <p>Established as a boutique accounting firm in New Delhi, India, with a focus on local small business accounting services.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2013</div>
+                    <div class="timeline-content">
+                        <h3>First International Client</h3>
+                        <p>Expanded services to include international accounting standards, serving our first overseas client in the Middle East.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2015</div>
+                    <div class="timeline-content">
+                        <h3>Incorporation as Private Limited</h3>
+                        <p>Formally incorporated as Hari Sharnam Business Solutions Private Limited, expanding our service offerings and team.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2018</div>
+                    <div class="timeline-content">
+                        <h3>Technology Integration</h3>
+                        <p>Implemented advanced accounting software and ERP solutions, becoming a technology-enabled financial services provider.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2021</div>
+                    <div class="timeline-content">
+                        <h3>Global Expansion</h3>
+                        <p>Established partnerships with firms in Europe and North America, offering comprehensive cross-border financial solutions.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2023</div>
+                    <div class="timeline-content">
+                        <h3>New Service Lines</h3>
+                        <p>Launched specialized divisions for tax advisory, business consulting, and virtual CFO services to meet growing client needs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="about-cta-section">
+        <div class="container">
+            <div class="cta-container">
+                <h2>Ready to Grow With Us?</h2>
+                <p>Partner with our team of experts to take your business to the next level.</p>
+                <a href="contact.html" class="cta-button cta-button-primary">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col footer-about">
+                <div class="footer-logo">
+                    <img src="images/logo-white.png" alt="HSBS Logo">
+                </div>
+                <p>Collaborating in Business Growth through comprehensive financial and business solutions for global enterprises.</p>
+                
+                <div class="footer-contact">
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>+91 95602 70977</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>hsbspl.55@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>New Delhi - 110076, India</span>
+                    </div>
+                </div>
+                
+                <div class="footer-social">
+                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-col footer-services">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="services.html">Accounting & Bookkeeping</a></li>
+                    <li><a href="services.html">Tax Advisory</a></li>
+                    <li><a href="services.html">Virtual CFO Services</a></li>
+                    <li><a href="services.html">Audit and Assurance</a></li>
+                    <li><a href="services.html">ERP Solutions</a></li>
+                    <li><a href="services.html">New Business Setup</a></li>
+                    <li><a href="services.html">Financial Services</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="industries.html">Industries</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="testimonials.html">Testimonials</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="blogs.html">Blog</a></li>
+                    <li><a href="carriers.html">Careers</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col footer-legal">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="terms-of-service.html">Terms of Service</a></li>
+                    <li><a href="cookies.html">Cookie Policy</a></li>
+                    <li><a href="disclaimer.html">Disclaimer</a></li>
+                    <li><a href="gdpr-compliance.html">GDPR Compliance</a></li>
+                </ul>
+                
+                <div class="footer-badges">
+                    <div class="badge">
+                        <i class="fas fa-lock"></i>
+                        <span>Secure Payments</span>
+                    </div>
+                    <div class="badge">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Data Protection</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="copyright">
+                <p>&copy; 2025 Hari Sharnam Business Solutions Private Limited. All rights reserved.</p>
+            </div>
+            
+            <div class="footer-extra">
+                <p>Registered Address: B-2, 540, JJ Colony, Madanpur Khadar, Sarita Vihar, New Delhi - 110076 (India)</p>
+                <p>CIN: U74120DL2010PTC200123</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenuBtn.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuBtn.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        // Check for saved theme preference
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme) {
+            body.classList.add(currentTheme);
+            if (currentTheme === 'dark-mode') {
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark-mode');
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                localStorage.setItem('theme', 'light-mode');
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+        });
+
+        // Back to Top Button
+        const backToTopBtn = document.querySelector('.back-to-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('active');
+            } else {
+                backToTopBtn.classList.remove('active');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Smooth scrolling for all links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Animate team members on scroll
+        const teamMembers = document.querySelectorAll('.team-member');
+
+        const animateTeamOnScroll = () => {
+            teamMembers.forEach((member, index) => {
+                const memberPosition = member.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+
+                if (memberPosition < screenPosition) {
+                    member.style.opacity = '1';
+                    member.style.transform = 'translateY(0)';
+                }
+            });
+        };
+
+        // Set initial state
+        teamMembers.forEach((member, index) => {
+            member.style.opacity = '0';
+            member.style.transform = 'translateY(20px)';
+            member.style.transition = `opacity 0.5s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s`;
+        });
+
+        window.addEventListener('scroll', animateTeamOnScroll);
+        window.addEventListener('load', animateTeamOnScroll);
+
+        // Animate timeline items on scroll
+        const timelineItems = document.querySelectorAll('.timeline-item');
+
+        const animateTimelineOnScroll = () => {
+            timelineItems.forEach((item, index) => {
+                const itemPosition = item.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+
+                if (itemPosition < screenPosition) {
+                    item.style.opacity = '1';
+                    item.querySelector('.timeline-content').style.transform = 'translateX(0)';
+                }
+            });
+        };
+
+        // Set initial state
+        timelineItems.forEach((item, index) => {
+            item.style.opacity = '0';
+            item.querySelector('.timeline-content').style.transform = 'translateX(20px)';
+            item.querySelector('.timeline-content').style.transition = 'transform 0.5s ease, opacity 0.5s ease';
+            item.style.transition = `opacity 0.5s ease ${index * 0.2}s`;
+        });
+
+        window.addEventListener('scroll', animateTimelineOnScroll);
+        window.addEventListener('load', animateTimelineOnScroll);
+    </script>
+</body>
+</html>
