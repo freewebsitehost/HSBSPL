@@ -1,0 +1,2777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NKV Financial Navigator - Comprehensive Financial Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0056b3;
+            --primary-light: #0077ff;
+            --secondary: #003366;
+            --accent: #ff6b00;
+            --accent-light: #ff8533;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+        
+        .logo img {
+            height: 40px;
+            transition: transform 0.3s;
+        }
+        
+        .logo:hover img {
+            transform: rotate(5deg);
+        }
+        
+        .logo h1 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+            font-size: 1.05rem;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+            transition: transform 0.3s;
+        }
+        
+        .mobile-menu-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            position: relative;
+            overflow: hidden;
+            margin-top: 70px;
+        }
+        
+        .hero-content {
+            max-width: 600px;
+            z-index: 2;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            background-color: var(--accent);
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1.05rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            background-color: var(--accent-light);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+            margin-left: 1rem;
+        }
+        
+        .btn-outline:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .hero-image {
+            position: absolute;
+            right: 5%;
+            bottom: 0;
+            height: 80%;
+            animation: float 6s ease-in-out infinite;
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
+        }
+        
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .shape {
+            position: absolute;
+            opacity: 0.1;
+            border-radius: 50%;
+            background-color: white;
+            animation: float 15s infinite linear;
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 5rem 5%;
+            text-align: center;
+            background-color: white;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 4px;
+            background-color: var(--accent);
+            bottom: -10px;
+            left: 25%;
+            border-radius: 2px;
+        }
+        
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2.5rem 2rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            border: 1px solid var(--light-gray);
+            text-align: left;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-light);
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background-color: var(--primary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover .service-icon {
+            transform: scale(1.1);
+        }
+        
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+        
+        .service-card p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            transition: color 0.3s;
+        }
+        
+        .service-link:hover {
+            color: var(--primary-light);
+        }
+        
+        .service-link i {
+            margin-left: 0.5rem;
+            transition: transform 0.3s;
+        }
+        
+        .service-link:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* Why Us Section */
+        .why-us {
+            padding: 5rem 5%;
+            background-color: var(--light);
+            text-align: center;
+        }
+        
+        .why-us-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .why-us-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+            text-align: center;
+        }
+        
+        .why-us-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .why-us-icon {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+        
+        .why-us-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+        
+        .why-us-card p {
+            color: var(--gray);
+        }
+        
+        /* Partners Section */
+        .partners {
+            padding: 5rem 5%;
+            background-color: white;
+            text-align: center;
+        }
+        
+        .partners-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            align-items: center;
+        }
+        
+        .partner-logo {
+            max-width: 180px;
+            height: auto;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s;
+        }
+        
+        .partner-logo:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: scale(1.05);
+        }
+        
+        /* About Section */
+        .about {
+            padding: 5rem 5%;
+            background-color: var(--light);
+        }
+        
+        .about-container {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            animation: fadeInLeft 1s ease-out;
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .about-content {
+            flex: 1;
+            animation: fadeInRight 1s ease-out;
+        }
+        
+        .about h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+        }
+        
+        .about p {
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+        
+        .about-features {
+            margin-top: 2rem;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-icon {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            margin-top: 0.3rem;
+        }
+        
+        .feature-text h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+        }
+        
+        .feature-text p {
+            margin-bottom: 0;
+            color: var(--gray);
+        }
+        
+        /* EMI Calculator Section */
+        .emi-calculator {
+            padding: 5rem 5%;
+            background-color: var(--light);
+            text-align: center;
+        }
+        
+        .calculator-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+        }
+        
+        .calculator-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--secondary);
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid var(--light-gray);
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.1);
+        }
+        
+        .range-slider {
+            width: 100%;
+            margin-top: 0.5rem;
+        }
+        
+        .calculator-results {
+            background-color: var(--primary);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+            text-align: center;
+        }
+        
+        .result-item {
+            margin-bottom: 1rem;
+        }
+        
+        .result-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .result-label {
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+            opacity: 0.8;
+        }
+        
+        .result-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        .breakup-chart {
+            margin-top: 2rem;
+            height: 300px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 1rem;
+        }
+        
+        /* Reviews Section */
+        .reviews {
+            padding: 5rem 5%;
+            background-color: var(--secondary);
+            color: white;
+            text-align: center;
+        }
+        
+        .reviews .section-title {
+            color: white;
+        }
+        
+        .reviews .section-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .review-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 2rem;
+            transition: all 0.3s;
+            position: relative;
+            text-align: left;
+            backdrop-filter: blur(5px);
+        }
+        
+        .review-card:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+        
+        .review-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .review-text::before,
+        .review-text::after {
+            content: '"';
+            font-size: 2rem;
+            color: var(--accent);
+            opacity: 0.5;
+            position: absolute;
+        }
+        
+        .review-text::before {
+            top: -15px;
+            left: -10px;
+        }
+        
+        .review-text::after {
+            bottom: -25px;
+            right: -10px;
+        }
+        
+        .review-author {
+            display: flex;
+            align-items: center;
+            margin-top: 1.5rem;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 1rem;
+            object-fit: cover;
+            border: 2px solid var(--accent);
+        }
+        
+        .author-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        .author-info p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 0;
+        }
+        
+        .rating {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            padding: 5rem 5%;
+            background-color: white;
+            text-align: center;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .testimonial-card {
+            background-color: var(--light);
+            border-radius: 10px;
+            padding: 2rem;
+            transition: all 0.3s;
+            position: relative;
+            text-align: left;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .testimonial-text::before,
+        .testimonial-text::after {
+            content: '"';
+            font-size: 2rem;
+            color: var(--accent);
+            opacity: 0.5;
+            position: absolute;
+        }
+        
+        .testimonial-text::before {
+            top: -15px;
+            left: -10px;
+        }
+        
+        .testimonial-text::after {
+            bottom: -25px;
+            right: -10px;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            margin-top: 1.5rem;
+        }
+        
+        /* Team Section */
+        .team {
+            padding: 5rem 5%;
+            text-align: center;
+            background-color: var(--light);
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+        
+        .team-member {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .member-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            overflow: hidden;
+            border: 3px solid var(--primary);
+            transition: all 0.3s;
+        }
+        
+        .team-member:hover .member-image {
+            transform: scale(1.05);
+            border-color: var(--accent);
+        }
+        
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .member-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+        }
+        
+        .member-info p {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .member-social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .member-social a {
+            color: var(--gray);
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+        
+        .member-social a:hover {
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 5rem 5%;
+            text-align: center;
+            background-color: white;
+        }
+        
+        .contact-container {
+            display: flex;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: center;
+        }
+        
+        .contact-info {
+            flex: 1;
+            text-align: left;
+            animation: fadeInLeft 1s ease-out;
+        }
+        
+        .contact-info h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+        
+        .info-icon {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            margin-top: 0.3rem;
+        }
+        
+        .info-text h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        .info-text p, .info-text a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .info-text a:hover {
+            color: var(--primary);
+        }
+        
+        .contact-form {
+            flex: 1;
+            background-color: var(--light);
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            animation: fadeInRight 1s ease-out;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--secondary);
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid var(--light-gray);
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.1);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+        
+        /* FAQ Section */
+        .faq {
+            padding: 5rem 5%;
+            background-color: var(--light);
+            text-align: center;
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            margin-bottom: 1rem;
+            border: 1px solid var(--light-gray);
+            border-radius: 5px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .faq-item:hover {
+            border-color: var(--primary-light);
+        }
+        
+        .faq-question {
+            padding: 1.5rem;
+            background-color: white;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--secondary);
+            transition: all 0.3s;
+        }
+        
+        .faq-question:hover {
+            background-color: rgba(0, 86, 179, 0.05);
+        }
+        
+        .faq-question i {
+            transition: transform 0.3s;
+        }
+        
+        .faq-item.active .faq-question {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease-out;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 1.5rem;
+            max-height: 500px;
+        }
+        
+        .faq-answer p {
+            color: var(--gray);
+            text-align: left;
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 5rem 5%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 4rem 5% 2rem;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 2px;
+            background-color: var(--accent);
+            bottom: -8px;
+            left: 0;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            text-decoration: none;
+        }
+        
+        .footer-logo img {
+            height: 40px;
+        }
+        
+        .footer-logo h2 {
+            font-size: 1.5rem;
+            color: white;
+        }
+        
+        .footer-col p {
+            color: #aaa;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s;
+            display: inline-block;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .footer-links a i {
+            margin-right: 0.5rem;
+            color: var(--accent);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .newsletter-form {
+            display: flex;
+            margin-top: 1.5rem;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 30px 0 0 30px;
+            font-size: 1rem;
+        }
+        
+        .newsletter-form button {
+            padding: 0 1.5rem;
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 0 30px 30px 0;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .newsletter-form button:hover {
+            background-color: var(--accent-light);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Chatbot */
+        .chatbot-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999;
+        }
+        
+        .chatbot-toggle {
+            width: 60px;
+            height: 60px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+        }
+        
+        .chatbot-toggle:hover {
+            transform: scale(1.1);
+            background-color: var(--accent-light);
+        }
+        
+        .chatbot-window {
+            width: 350px;
+            height: 500px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        .chatbot-window.active {
+            display: flex;
+        }
+        
+        .chatbot-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .chatbot-header h3 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+        
+        .chatbot-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        
+        .chatbot-body {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+            background-color: #f5f5f5;
+        }
+        
+        .chatbot-message {
+            margin-bottom: 1rem;
+            max-width: 80%;
+            padding: 0.8rem 1rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        
+        .bot-message {
+            background-color: white;
+            border-top-left-radius: 5px;
+            align-self: flex-start;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .user-message {
+            background-color: var(--primary);
+            color: white;
+            border-top-right-radius: 5px;
+            align-self: flex-end;
+            margin-left: auto;
+        }
+        
+        .chatbot-input-container {
+            display: flex;
+            padding: 1rem;
+            background-color: white;
+            border-top: 1px solid var(--light-gray);
+        }
+        
+        .chatbot-input {
+            flex: 1;
+            padding: 0.8rem;
+            border: 1px solid var(--light-gray);
+            border-radius: 30px;
+            outline: none;
+        }
+        
+        .chatbot-send {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            margin-left: 0.5rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .chatbot-send:hover {
+            background-color: var(--accent-light);
+        }
+        
+        .chatbot-login {
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        .chatbot-login input {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 0.5rem;
+            border: 1px solid var(--light-gray);
+            border-radius: 5px;
+        }
+        
+        .chatbot-login button {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .chatbot-login button:hover {
+            background-color: var(--accent-light);
+        }
+        
+        /* Voice Assistant */
+        .voice-assistant {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            z-index: 999;
+        }
+        
+        .voice-toggle {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+        }
+        
+        .voice-toggle:hover {
+            transform: scale(1.1);
+            background-color: var(--primary-light);
+        }
+        
+        .voice-toggle.listening {
+            animation: pulse 1.5s infinite;
+        }
+        
+        .voice-response {
+            position: absolute;
+            bottom: 80px;
+            left: 0;
+            width: 300px;
+            background-color: white;
+            border-radius: 15px;
+            padding: 1rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            display: none;
+        }
+        
+        .voice-response.active {
+            display: block;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(0, 86, 179, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(0, 86, 179, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 86, 179, 0);
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .about-container,
+            .contact-container {
+                flex-direction: column;
+                gap: 3rem;
+            }
+            
+            .about-image,
+            .about-content,
+            .contact-info,
+            .contact-form {
+                width: 100%;
+                max-width: 600px;
+                margin: 0 auto;
+            }
+            
+            .hero-image {
+                height: 60%;
+                opacity: 0.5;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 3rem;
+                transition: left 0.3s;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero {
+                text-align: center;
+            }
+            
+            .hero-content {
+                margin: 0 auto;
+                text-align: center;
+            }
+            
+            .hero-image {
+                display: none;
+            }
+            
+            .btn-group {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
+                margin-top: 1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .section-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .chatbot-window {
+                width: 300px;
+                height: 400px;
+                right: 10px;
+            }
+            
+            .voice-assistant {
+                left: 10px;
+                bottom: 100px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .btn {
+                padding: 0.7rem 1.5rem;
+                font-size: 1rem;
+            }
+            
+            .services-grid,
+            .team-grid,
+            .testimonials-grid,
+            .reviews-grid,
+            .why-us-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-form input {
+                border-radius: 30px;
+                margin-bottom: 0.5rem;
+            }
+            
+            .newsletter-form button {
+                border-radius: 30px;
+                padding: 0.8rem;
+            }
+            
+            .chatbot-window {
+                width: 280px;
+                height: 380px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="#home" class="logo">
+            <img src="images/nkv_logo.png" alt="NKV Financial Navigator Logo">
+            <h1>FinancialAdvisors</h1>
+        </a>
+        <button class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="#services">Services</a>
+            <a href="#emi-calculator">EMI Calculator</a>
+            <a href="#why-us">Why Us</a>
+            <a href="#partners">Partners</a>
+            <a href="#reviews">Reviews</a>
+            <a href="#about">About</a>
+            <a href="#team">Team</a>
+            <a href="#testimonials">Testimonials</a>
+            <a href="#faq">FAQ</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="floating-shapes">
+            <div class="shape" style="width: 100px; height: 100px; top: 20%; left: 10%;"></div>
+            <div class="shape" style="width: 150px; height: 150px; top: 60%; left: 80%;"></div>
+            <div class="shape" style="width: 80px; height: 80px; top: 30%; left: 70%;"></div>
+            <div class="shape" style="width: 120px; height: 120px; top: 70%; left: 20%;"></div>
+        </div>
+        <div class="hero-content">
+            <h1>Your Trusted Financial Guidance Partner</h1>
+            <p>NKV Financial Navigator provides comprehensive financial solutions tailored to your unique needs, helping you achieve financial stability and growth.</p>
+            <div class="btn-group">
+                <a href="#contact" class="btn">Get Started</a>
+                <a href="#services" class="btn btn-outline">Our Services</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <h2 class="section-title">Our Services</h2>
+        <p class="section-subtitle">We offer a wide range of financial services to help you navigate your financial journey</p>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-chart-pie"></i>
+                </div>
+                <h3>Financial Planning</h3>
+                <p>Comprehensive financial planning services to help you set and achieve your financial goals through personalized strategies.</p>
+                <a href="#" class="service-link">Learn more <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-hand-holding-usd"></i>
+                </div>
+                <h3>Investment Management</h3>
+                <p>Expert investment strategies tailored to your risk tolerance and financial objectives for optimal portfolio growth.</p>
+                <a href="#" class="service-link">Learn more <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Risk Management</h3>
+                <p>Protect your assets and loved ones with our comprehensive risk assessment and insurance solutions.</p>
+                <a href="#" class="service-link">Learn more <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-piggy-bank"></i>
+                </div>
+                <h3>Retirement Planning</h3>
+                <p>Secure your golden years with customized retirement plans that ensure financial stability when you need it most.</p>
+                <a href="#" class="service-link">Learn more <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-home"></i>
+                </div>
+                <h3>Estate Planning</h3>
+                <p>Preserve your legacy and ensure your assets are distributed according to your wishes with our estate planning services.</p>
+                <a href="#" class="service-link">Learn more <i class="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3>Education Funding</h3>
+                <p>Strategies to save for education expenses, from 529 plans to trust funds, ensuring bright futures for your loved ones.</p>
+                <a href="#" class="service-link">Learn more <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Why Us Section -->
+    <section class="why-us" id="why-us">
+        <h2 class="section-title">Why Choose NKV Financial Navigator</h2>
+        <p class="section-subtitle">We stand out from the competition with our unique approach and expertise</p>
+        
+        <div class="why-us-container">
+            <div class="why-us-card">
+                <div class="why-us-icon">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <h3>Expert Advisors</h3>
+                <p>Our team consists of certified financial professionals with decades of combined experience in wealth management.</p>
+            </div>
+            
+            <div class="why-us-card">
+                <div class="why-us-icon">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <h3>Client-Centric Approach</h3>
+                <p>We prioritize your financial goals and tailor our strategies to your unique needs and risk tolerance.</p>
+            </div>
+            
+            <div class="why-us-card">
+                <div class="why-us-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Proven Results</h3>
+                <p>Our investment strategies have consistently outperformed market benchmarks over the long term.</p>
+            </div>
+            
+            <div class="why-us-card">
+                <div class="why-us-icon">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <h3>Transparent Pricing</h3>
+                <p>No hidden fees or commissions. We operate on a clear, fee-only basis that aligns with your success.</p>
+            </div>
+            
+            <div class="why-us-card">
+                <div class="why-us-icon">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <h3>Comprehensive Tools</h3>
+                <p>Access to cutting-edge financial planning tools and resources to help you make informed decisions.</p>
+            </div>
+            
+            <div class="why-us-card">
+                <div class="why-us-icon">
+                    <i class="fas fa-award"></i>
+                </div>
+                <h3>Award-Winning Service</h3>
+                <p>Recognized by industry leaders for our exceptional client service and innovative financial solutions.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Partners Section -->
+    <section class="partners" id="partners">
+        <h2 class="section-title">Our Trusted Partners</h2>
+        <p class="section-subtitle">We collaborate with leading financial institutions to bring you the best solutions</p>
+        
+        <div class="partners-grid">
+            <img src="https://nkv-financial-navigator.lovable.app/assets/partner1.png" alt="Partner 1" class="partner-logo">
+            <img src="https://nkv-financial-navigator.lovable.app/assets/partner2.png" alt="Partner 2" class="partner-logo">
+            <img src="https://nkv-financial-navigator.lovable.app/assets/partner3.png" alt="Partner 3" class="partner-logo">
+            <img src="https://nkv-financial-navigator.lovable.app/assets/partner4.png" alt="Partner 4" class="partner-logo">
+            <img src="https://nkv-financial-navigator.lovable.app/assets/partner5.png" alt="Partner 5" class="partner-logo">
+        </div>
+    </section>
+    
+    <!-- EMI Calculator Section -->
+    <section class="emi-calculator" id="emi-calculator">
+        <h2 class="section-title">EMI Calculator</h2>
+        <p class="section-subtitle">Calculate your monthly loan payments with our easy-to-use EMI calculator</p>
+        
+        <div class="calculator-container">
+            <form class="calculator-form" id="emiForm">
+                <div class="form-group">
+                    <label for="loanAmount">Loan Amount (₹)</label>
+                    <input type="number" id="loanAmount" min="1000" max="100000000" value="1000000" required>
+                    <input type="range" id="loanAmountRange" min="1000" max="100000000" value="1000000" class="range-slider">
+                </div>
+                
+                <div class="form-group">
+                    <label for="interestRate">Interest Rate (% p.a.)</label>
+                    <input type="number" id="interestRate" min="1" max="30" step="0.1" value="8.5" required>
+                    <input type="range" id="interestRateRange" min="1" max="30" step="0.1" value="8.5" class="range-slider">
+                </div>
+                
+                <div class="form-group">
+                    <label for="loanTenure">Loan Tenure (years)</label>
+                    <input type="number" id="loanTenure" min="1" max="30" value="15" required>
+                    <input type="range" id="loanTenureRange" min="1" max="30" value="15" class="range-slider">
+                </div>
+                
+                <button type="submit" class="btn">Calculate EMI</button>
+            </form>
+            
+            <div class="calculator-results" id="emiResults" style="display: none;">
+                <div class="result-item">
+                    <div class="result-label">Monthly Payment (EMI)</div>
+                    <div class="result-value" id="monthlyEmi">₹9,876</div>
+                </div>
+                
+                <div class="result-item">
+                    <div class="result-label">Total Interest Payable</div>
+                    <div class="result-value" id="totalInterest">₹7,77,841</div>
+                </div>
+                
+                <div class="result-item">
+                    <div class="result-label">Total Payment (Principal + Interest)</div>
+                    <div class="result-value" id="totalPayment">₹17,77,841</div>
+                </div>
+                
+                <div class="breakup-chart" id="breakupChart">
+                    <!-- Chart will be rendered here by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Reviews Section -->
+    <section class="reviews" id="reviews">
+        <h2 class="section-title">Client Reviews</h2>
+        <p class="section-subtitle">See what our clients say about their experience with us</p>
+        
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="review-text">
+                    NKV Financial Navigator transformed our financial future. Their team created a comprehensive plan that addressed all our concerns and set us on a path to early retirement.
+                </div>
+                <div class="review-author">
+                    <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Sarah Johnson" class="author-avatar">
+                    <div class="author-info">
+                        <h4>Amit</h4>
+                        <p>Small Business Owner</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="review-card">
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="review-text">
+                    As someone who knew nothing about investing, I was nervous to start. The NKV team explained everything in simple terms and built a portfolio that's grown steadily for 5 years now.
+                </div>
+                <div class="review-author">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen" class="author-avatar">
+                    <div class="author-info">
+                        <h4>Sonu</h4>
+                        <p>Software Engineer</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="review-card">
+                <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <div class="review-text">
+                    The estate planning services saved my family from potential conflicts and excessive taxes. Their attention to detail and knowledge of current laws was impressive.
+                </div>
+                <div class="review-author">
+                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Elizabeth Martinez" class="author-avatar">
+                    <div class="author-info">
+                        <h4>Ankit</h4>
+                        <p>Retired Teacher</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-container">
+            <div class="about-image">
+                <img src="https://nkv-financial-navigator.lovable.app/assets/about-image.jpg" alt="Our team meeting">
+            </div>
+            <div class="about-content">
+                <h2>About NKV Financial Navigator</h2>
+                <p>Founded in 2010, NKV Financial Navigator has been guiding individuals and businesses through complex financial landscapes for over a decade. Our mission is to empower clients with knowledge and tools to make informed financial decisions.</p>
+                <p>We believe in a holistic approach to financial planning, considering all aspects of our clients' financial lives to create comprehensive strategies that evolve with their changing needs.</p>
+                
+                <div class="about-features">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Our Mission</h4>
+                            <p>To provide accessible, personalized financial guidance that helps clients achieve their life goals through sound financial strategies.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Our Vision</h4>
+                            <p>To be the most trusted financial navigation partner for individuals and families seeking financial security and prosperity.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Our Values</h4>
+                            <p>Integrity, transparency, excellence, and client-centric approach form the foundation of everything we do.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <h2 class="section-title">Client Testimonials</h2>
+        <p class="section-subtitle">Hear what our clients say about their experience with NKV Financial Navigator</p>
+        
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-text">
+                    NKV Financial Navigator transformed our financial future. Their team created a comprehensive plan that addressed all our concerns and set us on a path to early retirement.
+                </div>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Sarah Johnson" class="author-avatar">
+                    <div class="author-info">
+                        <h4>Vishal</h4>
+                        <p>Small Business Owner</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="testimonial-text">
+                    As someone who knew nothing about investing, I was nervous to start. The NKV team explained everything in simple terms and built a portfolio that's grown steadily for 5 years now.
+                </div>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen" class="author-avatar">
+                    <div class="author-info">
+                        <h4>Sourav</h4>
+                        <p>Software Engineer</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <div class="testimonial-text">
+                    The estate planning services saved my family from potential conflicts and excessive taxes. Their attention to detail and knowledge of current laws was impressive.
+                </div>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Elizabeth Martinez" class="author-avatar">
+                    <div class="author-info">
+                        <h4>Rabya</h4>
+                        <p>Retired Teacher</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Team Section -->
+    <section class="team" id="team">
+        <h2 class="section-title">Meet Our Team</h2>
+        <p class="section-subtitle">Our team of certified financial experts is dedicated to your success</p>
+        
+        <div class="team-grid">
+            <div class="team-member">
+                <div class="member-image">
+                    <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Robert King">
+                </div>
+                <div class="member-info">
+                    <h3>Rohit</h3>
+                    <p>Founder & CEO</p>
+                    <p>CFP®, 25 years experience</p>
+                    <div class="member-social">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="team-member">
+                <div class="member-image">
+                    <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Jennifer Lee">
+                </div>
+                <div class="member-info">
+                    <h3>JOhn Lee</h3>
+                    <p>Senior Financial Advisor</p>
+                    <p>CFA, 15 years experience</p>
+                    <div class="member-social">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="team-member">
+                <div class="member-image">
+                    <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="David Patel">
+                </div>
+                <div class="member-info">
+                    <h3>David Patel</h3>
+                    <p>Investment Specialist</p>
+                    <p>MBA, 12 years experience</p>
+                    <div class="member-social">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="team-member">
+                <div class="member-image">
+                    <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Amanda Garcia">
+                </div>
+                <div class="member-info">
+                    <h3>Amanda Garcia</h3>
+                    <p>Risk Management Expert</p>
+                    <p>CLU®, 10 years experience</p>
+                    <div class="member-social">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2 class="section-title">Contact Us</h2>
+        <p class="section-subtitle">Get in touch with our team for personalized financial guidance</p>
+        
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2>How Can We Help You?</h2>
+                <p>Have questions about our services or ready to start your financial journey? Reach out to us through any of the channels below.</p>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="info-text">
+                        <h4>Our Office</h4>
+                        <p>123 Financial District, Suite 456<br>San Francisco, CA 94111</p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="info-text">
+                        <h4>Phone</h4>
+                        <p><a href="tel:+18005551234">(800) 555-1234</a></p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="info-text">
+                        <h4>Email</h4>
+                        <p><a href="mailto:info@nkvfinancial.com">info@nkvfinancial.com</a></p>
+                    </div>
+                </div>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="info-text">
+                        <h4>Business Hours</h4>
+                        <p>Monday - Friday: 9:00 AM - 5:00 PM<br>Saturday - Sunday: Closed</p>
+                    </div>
+                </div>
+            </div>
+            
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                <div class="form-group">
+                    <label for="service">Service Interested In</label>
+                    <select id="service" name="service">
+                        <option value="">Select a service</option>
+                        <option value="financial-planning">Financial Planning</option>
+                        <option value="investment-management">Investment Management</option>
+                        <option value="retirement-planning">Retirement Planning</option>
+                        <option value="risk-management">Risk Management</option>
+                        <option value="estate-planning">Estate Planning</option>
+                        <option value="education-funding">Education Funding</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+    
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-subtitle">Find answers to common questions about our services and financial planning</p>
+        
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">
+                    What makes NKV Financial Navigator different from other financial advisors?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>We take a holistic approach to financial planning, considering all aspects of your financial life rather than focusing on isolated products or services. Our team of certified professionals uses cutting-edge technology combined with personalized service to create strategies that evolve with your changing needs.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    How are your fees structured?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>We operate on a fee-only basis, which means we don't earn commissions from product sales. Our fees are transparent and based on the complexity of your financial situation and the services you require. During our initial consultation, we'll provide a clear explanation of all costs before you make any commitments.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    What is your investment philosophy?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>We believe in evidence-based investing that focuses on long-term strategies rather than short-term market timing. Our approach emphasizes diversification, cost efficiency, and aligning investments with your specific risk tolerance and financial goals. We regularly review and rebalance portfolios to maintain target allocations.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    How often will we meet to review my financial plan?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>We typically schedule quarterly reviews for active clients, but the frequency can be adjusted based on your needs. Between formal meetings, we're always available to address questions or concerns that may arise. Major life events like marriage, career changes, or inheritance will prompt additional reviews.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    Do you work with clients remotely?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, we serve clients nationwide through secure video conferencing and digital collaboration tools. Our technology platform allows us to provide the same high level of service to remote clients as we do to those who visit our office in person.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    What credentials do your advisors hold?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Our team includes Certified Financial Planners (CFP®), Chartered Financial Analysts (CFA), and other industry-certified professionals. We maintain these credentials through ongoing education and adhere to strict ethical standards. You can verify our credentials through the CFP Board and CFA Institute websites.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta">
+        <h2>Ready to Take Control of Your Financial Future?</h2>
+        <p>Schedule a free consultation with one of our financial experts today and start your journey toward financial security and prosperity.</p>
+        <a href="#contact" class="btn">Get Started</a>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <a href="#home" class="footer-logo">
+                    <img src="https://nkv-financial-navigator.lovable.app/assets/logo-white.png" alt="NKV Financial Navigator Logo">
+                    <h2>NKV Financial Navigator</h2>
+                </a>
+                <p>Empowering your financial journey with expert guidance and personalized strategies since 2010.</p>
+                
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li>
+                    <li><a href="#emi-calculator"><i class="fas fa-chevron-right"></i> EMI Calculator</a></li>
+                    <li><a href="#why-us"><i class="fas fa-chevron-right"></i> Why Us</a></li>
+                    <li><a href="#partners"><i class="fas fa-chevron-right"></i> Partners</a></li>
+                    <li><a href="#reviews"><i class="fas fa-chevron-right"></i> Reviews</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Financial Planning</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Investment Management</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Retirement Planning</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Risk Management</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Estate Planning</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Education Funding</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-col">
+                <h3>Newsletter</h3>
+                <p>Subscribe to our newsletter for financial tips, market updates, and company news.</p>
+                
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your email address" required>
+                    <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                </form>
+                
+                <p class="footer-bottom">
+                    &copy; 2025 NKV FinancialAdvisors. All rights reserved.<br>
+                    <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Chatbot -->
+    <div class="chatbot-container">
+        <div class="chatbot-toggle" id="chatbotToggle">
+            <i class="fas fa-comment-dots"></i>
+        </div>
+        <div class="chatbot-window" id="chatbotWindow">
+            <div class="chatbot-header">
+                <h3>NKV Financial Assistant</h3>
+                <button class="chatbot-close" id="chatbotClose">&times;</button>
+            </div>
+            <div class="chatbot-body" id="chatbotBody">
+                <!-- Messages will be added here dynamically -->
+            </div>
+            <div class="chatbot-input-container" id="chatInputContainer" style="display: none;">
+                <input type="text" class="chatbot-input" id="chatbotInput" placeholder="Type your message...">
+                <button class="chatbot-send" id="chatbotSend"><i class="fas fa-paper-plane"></i></button>
+            </div>
+            <div class="chatbot-login" id="chatbotLogin">
+                <h4>Welcome to NKV Financial Assistant</h4>
+                <p>Please provide your details to start chatting</p>
+                <input type="text" id="chatbotName" placeholder="Your Name" required>
+                <input type="email" id="chatbotEmail" placeholder="Your Email" required>
+                <input type="tel" id="chatbotPhone" placeholder="Your Phone Number" required>
+                <button id="chatbotStart">Start Chatting</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Voice Assistant -->
+    <div class="voice-assistant">
+        <div class="voice-toggle" id="voiceToggle">
+            <i class="fas fa-microphone"></i>
+        </div>
+        <div class="voice-response" id="voiceResponse">
+            <p>Hello! How can I help you today?</p>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Smooth Scrolling for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 70,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Animation on Scroll
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll(
+                '.service-card, .about-image, .about-content, ' +
+                '.testimonial-card, .team-member, .contact-info, ' +
+                '.contact-form, .faq-item, .calculator-container, ' +
+                '.why-us-card, .review-card'
+            );
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // Set initial state for animated elements
+        document.querySelectorAll('.service-card').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = `opacity 0.5s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s`;
+        });
+        
+        document.querySelector('.about-image').style.opacity = '0';
+        document.querySelector('.about-image').style.transform = 'translateX(-20px)';
+        document.querySelector('.about-image').style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        
+        document.querySelector('.about-content').style.opacity = '0';
+        document.querySelector('.about-content').style.transform = 'translateX(20px)';
+        document.querySelector('.about-content').style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        
+        document.querySelectorAll('.testimonial-card').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = `opacity 0.5s ease ${index * 0.2}s, transform 0.5s ease ${index * 0.2}s`;
+        });
+        
+        document.querySelectorAll('.team-member').forEach((member, index) => {
+            member.style.opacity = '0';
+            member.style.transform = 'translateY(20px)';
+            member.style.transition = `opacity 0.5s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s`;
+        });
+        
+        document.querySelector('.contact-info').style.opacity = '0';
+        document.querySelector('.contact-info').style.transform = 'translateX(-20px)';
+        document.querySelector('.contact-info').style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        
+        document.querySelector('.contact-form').style.opacity = '0';
+        document.querySelector('.contact-form').style.transform = 'translateX(20px)';
+        document.querySelector('.contact-form').style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        
+        document.querySelectorAll('.faq-item').forEach((item, index) => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(20px)';
+            item.style.transition = `opacity 0.5s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s`;
+        });
+        
+        document.querySelector('.calculator-container').style.opacity = '0';
+        document.querySelector('.calculator-container').style.transform = 'translateY(20px)';
+        document.querySelector('.calculator-container').style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        
+        document.querySelectorAll('.why-us-card').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = `opacity 0.5s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s`;
+        });
+        
+        document.querySelectorAll('.review-card').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = `opacity 0.5s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s`;
+        });
+        
+        // Add scroll event listener
+        window.addEventListener('scroll', animateOnScroll);
+        
+        // Trigger once on page load
+        animateOnScroll();
+        
+        // Floating shapes animation
+        const shapes = document.querySelectorAll('.shape');
+        shapes.forEach((shape, index) => {
+            const duration = 15 + Math.random() * 10;
+            const delay = Math.random() * 5;
+            shape.style.animation = `float ${duration}s infinite ${delay}s linear`;
+        });
+        
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                // Close all other items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                        otherItem.querySelector('.faq-answer').style.maxHeight = '0';
+                        otherItem.querySelector('.faq-answer').style.padding = '0';
+                    }
+                });
+                
+                // Toggle current item
+                item.classList.toggle('active');
+                const answer = item.querySelector('.faq-answer');
+                if (item.classList.contains('active')) {
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                    answer.style.padding = '1.5rem';
+                } else {
+                    answer.style.maxHeight = '0';
+                    answer.style.padding = '0';
+                }
+            });
+        });
+        
+        // EMI Calculator Functionality
+        const emiForm = document.getElementById('emiForm');
+        const emiResults = document.getElementById('emiResults');
+        
+        // Sync range sliders with number inputs
+        document.getElementById('loanAmount').addEventListener('input', function() {
+            document.getElementById('loanAmountRange').value = this.value;
+        });
+        
+        document.getElementById('loanAmountRange').addEventListener('input', function() {
+            document.getElementById('loanAmount').value = this.value;
+        });
+        
+        document.getElementById('interestRate').addEventListener('input', function() {
+            document.getElementById('interestRateRange').value = this.value;
+        });
+        
+        document.getElementById('interestRateRange').addEventListener('input', function() {
+            document.getElementById('interestRate').value = this.value;
+        });
+        
+        document.getElementById('loanTenure').addEventListener('input', function() {
+            document.getElementById('loanTenureRange').value = this.value;
+        });
+        
+        document.getElementById('loanTenureRange').addEventListener('input', function() {
+            document.getElementById('loanTenure').value = this.value;
+        });
+        
+        // Calculate EMI
+        function calculateEMI() {
+            const loanAmount = parseFloat(document.getElementById('loanAmount').value);
+            const interestRate = parseFloat(document.getElementById('interestRate').value);
+            const loanTenure = parseFloat(document.getElementById('loanTenure').value);
+            
+            // Convert annual rate to monthly and percentage to decimal
+            const monthlyRate = (interestRate / 12) / 100;
+            const tenureMonths = loanTenure * 12;
+            
+            // EMI formula: [P x R x (1+R)^N]/[(1+R)^N-1]
+            const emi = (loanAmount * monthlyRate * Math.pow(1 + monthlyRate, tenureMonths)) / 
+                        (Math.pow(1 + monthlyRate, tenureMonths) - 1);
+            
+            const totalPayment = emi * tenureMonths;
+            const totalInterest = totalPayment - loanAmount;
+            
+            // Format currency
+            const formatter = new Intl.NumberFormat('en-IN', {
+                style: 'currency',
+                currency: 'INR',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            });
+            
+            // Update results
+            document.getElementById('monthlyEmi').textContent = formatter.format(emi);
+            document.getElementById('totalInterest').textContent = formatter.format(totalInterest);
+            document.getElementById('totalPayment').textContent = formatter.format(totalPayment);
+            
+            // Show results
+            emiResults.style.display = 'block';
+            
+            // Update chart (simplified for this example)
+            updateChart(loanAmount, totalInterest);
+        }
+        
+        // Simple chart update function
+        function updateChart(principal, interest) {
+            const chart = document.getElementById('breakupChart');
+            chart.innerHTML = `
+                <canvas id="emiChart" width="100%" height="100%"></canvas>
+            `;
+            
+            // In a real implementation, you would use Chart.js or similar library
+            // This is a simplified placeholder
+            const ctx = document.getElementById('emiChart').getContext('2d');
+            
+            // Create a simple pie chart
+            new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['Principal', 'Interest'],
+                    datasets: [{
+                        data: [principal, interest],
+                        backgroundColor: [
+                            'rgba(0, 86, 179, 0.8)',
+                            'rgba(255, 107, 0, 0.8)'
+                        ],
+                        borderColor: [
+                            'rgba(0, 86, 179, 1)',
+                            'rgba(255, 107, 0, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: 'white',
+                                font: {
+                                    size: 14
+                                }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const label = context.label || '';
+                                    const value = context.raw || 0;
+                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                    const percentage = Math.round((value / total) * 100);
+                                    return `${label}: ₹${value.toLocaleString()} (${percentage}%)`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Form submission
+        emiForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            calculateEMI();
+        });
+        
+        // Calculate on initial load
+        calculateEMI();
+        
+        // Chatbot functionality
+        const chatbotToggle = document.getElementById('chatbotToggle');
+        const chatbotWindow = document.getElementById('chatbotWindow');
+        const chatbotClose = document.getElementById('chatbotClose');
+        const chatbotBody = document.getElementById('chatbotBody');
+        const chatInputContainer = document.getElementById('chatInputContainer');
+        const chatbotInput = document.getElementById('chatbotInput');
+        const chatbotSend = document.getElementById('chatbotSend');
+        const chatbotLogin = document.getElementById('chatbotLogin');
+        const chatbotStart = document.getElementById('chatbotStart');
+        
+        let isChatbotOpen = false;
+        let userData = {};
+        
+        // Toggle chatbot window
+        chatbotToggle.addEventListener('click', () => {
+            isChatbotOpen = !isChatbotOpen;
+            chatbotWindow.classList.toggle('active', isChatbotOpen);
+        });
+        
+        // Close chatbot
+        chatbotClose.addEventListener('click', () => {
+            isChatbotOpen = false;
+            chatbotWindow.classList.remove('active');
+        });
+        
+        // Start chatting after login
+        chatbotStart.addEventListener('click', () => {
+            const name = document.getElementById('chatbotName').value;
+            const email = document.getElementById('chatbotEmail').value;
+            const phone = document.getElementById('chatbotPhone').value;
+            
+            if (name && email && phone) {
+                userData = { name, email, phone };
+                chatbotLogin.style.display = 'none';
+                chatInputContainer.style.display = 'flex';
+                
+                // Add welcome message
+                addBotMessage(`Hello ${name}! How can I help you today? Here are some things you can ask about:
+                <br>- Financial planning services
+                <br>- Investment options
+                <br>- Retirement planning
+                <br>- EMI calculations
+                <br>- Appointment scheduling`);
+            } else {
+                alert('Please fill in all fields');
+            }
+        });
+        
+        // Send message
+        function sendMessage() {
+            const message = chatbotInput.value.trim();
+            if (message) {
+                addUserMessage(message);
+                chatbotInput.value = '';
+                
+                // Simulate bot response
+                setTimeout(() => {
+                    const responses = [
+                        "I understand you're asking about " + message + ". Our financial advisors can provide detailed information about this.",
+                        "That's a great question! Our team specializes in " + message + ". Would you like me to connect you with an advisor?",
+                        "For " + message + ", we typically recommend starting with a free consultation. Would you like to schedule one?",
+                        "I've noted your interest in " + message + ". One of our experts will contact you at " + userData.email + " with more information."
+                    ];
+                    
+                    const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+                    addBotMessage(randomResponse);
+                }, 1000);
+            }
+        }
+        
+        // Send message on button click
+        chatbotSend.addEventListener('click', sendMessage);
+        
+        // Send message on Enter key
+        chatbotInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+        
+        // Add user message to chat
+        function addUserMessage(message) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'chatbot-message user-message';
+            messageDiv.innerHTML = message;
+            chatbotBody.appendChild(messageDiv);
+            chatbotBody.scrollTop = chatbotBody.scrollHeight;
+        }
+        
+        // Add bot message to chat
+        function addBotMessage(message) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'chatbot-message bot-message';
+            messageDiv.innerHTML = message;
+            chatbotBody.appendChild(messageDiv);
+            chatbotBody.scrollTop = chatbotBody.scrollHeight;
+        }
+        
+        // Voice assistant functionality
+        const voiceToggle = document.getElementById('voiceToggle');
+        const voiceResponse = document.getElementById('voiceResponse');
+        
+        let isListening = false;
+        let recognition;
+        
+        // Check for browser support
+        if ('webkitSpeechRecognition' in window) {
+            recognition = new webkitSpeechRecognition();
+            recognition.continuous = false;
+            recognition.interimResults = false;
+            
+            recognition.onstart = function() {
+                isListening = true;
+                voiceToggle.classList.add('listening');
+            };
+            
+            recognition.onend = function() {
+                isListening = false;
+                voiceToggle.classList.remove('listening');
+            };
+            
+            recognition.onresult = function(event) {
+                const transcript = event.results[0][0].transcript.toLowerCase();
+                voiceResponse.innerHTML = `<p>You said: "${transcript}"</p>`;
+                voiceResponse.classList.add('active');
+                
+                // Process the command
+                processVoiceCommand(transcript);
+                
+                // Hide after 5 seconds
+                setTimeout(() => {
+                    voiceResponse.classList.remove('active');
+                }, 5000);
+            };
+            
+            recognition.onerror = function(event) {
+                console.error('Speech recognition error', event.error);
+                voiceResponse.innerHTML = `<p>Error: ${event.error}</p>`;
+                voiceResponse.classList.add('active');
+                
+                setTimeout(() => {
+                    voiceResponse.classList.remove('active');
+                }, 3000);
+            };
+        }
+        
+        // Toggle voice recognition
+        voiceToggle.addEventListener('click', () => {
+            if (!recognition) {
+                voiceResponse.innerHTML = '<p>Voice recognition not supported in your browser</p>';
+                voiceResponse.classList.add('active');
+                setTimeout(() => {
+                    voiceResponse.classList.remove('active');
+                }, 3000);
+                return;
+            }
+            
+            if (isListening) {
+                recognition.stop();
+            } else {
+                recognition.start();
+                voiceResponse.innerHTML = '<p>Listening... Please speak now</p>';
+                voiceResponse.classList.add('active');
+            }
+        });
+        
+        // Process voice commands
+        function processVoiceCommand(command) {
+            let response = '';
+            
+            if (command.includes('hello') || command.includes('hi')) {
+                response = 'Hello! How can I help you today?';
+            } else if (command.includes('services')) {
+                response = 'We offer financial planning, investment management, retirement planning, and more. Would you like me to direct you to our services page?';
+            } else if (command.includes('contact')) {
+                response = 'You can reach us at (800) 555-1234 or email info@nkvfinancial.com. Our office is at 123 Financial District, San Francisco.';
+            } else if (command.includes('appointment') || command.includes('meeting')) {
+                response = 'To schedule an appointment, please visit our contact page or say "open contact page" and fill out the form.';
+            } else if (command.includes('open') && command.includes('home')) {
+                window.location.href = '#home';
+                response = 'Taking you to the home section.';
+            } else if (command.includes('open') && command.includes('services')) {
+                window.location.href = '#services';
+                response = 'Taking you to our services section.';
+            } else if (command.includes('open') && command.includes('contact')) {
+                window.location.href = '#contact';
+                response = 'Taking you to our contact section where you can reach out to us.';
+            } else {
+                response = 'I heard you say: "' + command + '". For more specific information, please visit our website or contact our advisors directly.';
+            }
+            
+            setTimeout(() => {
+                voiceResponse.innerHTML = `<p>${response}</p>`;
+            }, 1000);
+        }
+        
+        // Contact form submission
+        const contactForm = document.querySelector('.contact-form');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            
+            // Here you would typically send the form data to a server
+            // For this example, we'll just show an alert
+            alert(`Thank you, ${name}! We've received your message and will contact you at ${email} soon.`);
+            
+            // Reset the form
+            contactForm.reset();
+        });
+        
+        // Newsletter form submission
+        const newsletterForm = document.querySelector('.newsletter-form');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const emailInput = newsletterForm.querySelector('input[type="email"]');
+                alert(`Thank you for subscribing with ${emailInput.value}! You'll receive our next newsletter soon.`);
+                emailInput.value = '';
+            });
+        }
+    </script>
+</body>
+</html>
